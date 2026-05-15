@@ -123,19 +123,30 @@ def main():
     repo = os.environ.get('INPUT_REPO')
     config_file = os.environ.get('INPUT_CONFIG_FILE')
     central_config_file = os.environ.get('INPUT_CENTRAL_CONFIG_FILE', 'config/central_config.yml')
+    action_path = os.environ.get('ACTION_PATH', '.')
     provider_filter = os.environ.get('INPUT_PROVIDER', 'all')
     env_filter = os.environ.get('INPUT_ENV')
     secrets_json_str = os.environ.get('SECRETS_JSON', '{}')
     vars_json_str = os.environ.get('VARS_JSON', '{}')
+
+    github_repository = os.environ.get("GITHUB_REPOSITORY", "")
+    if not org and github_repository:
+        org = github_repository.split('/')[0]
+    if not repo and github_repository:
+        repo = github_repository.split('/')[-1]
     
     # Default config path if org and repo are provided
     if not config_file:
         if org and repo:
-            config_file = f"./config/{org}/{repo}.yml"
+            config_file = os.path.join(action_path, "config", org, f"{repo}.yml")
         else:
             logger.error("Either 'config-file' input or both 'org' and 'repo' inputs are required.")
             sys.exit(1)
+    else:
+        config_file = os.path.join(action_path, config_file) if not os.path.isabs(config_file) else config_file
             
+    central_config_file = os.path.join(action_path, central_config_file) if not os.path.isabs(central_config_file) else central_config_file
+
     try:
         github_secrets = json.loads(secrets_json_str) if secrets_json_str else {}
     except json.JSONDecodeError as e:

@@ -76,7 +76,16 @@ runs:
 
     - name: Run yamllint
       run: |
-        yamllint ${{ inputs.config-file }} ${{ inputs.central-config-file }}
+        CONFIG_FILE="${{ inputs.config-file }}"
+        ORG="${{ inputs.org }}"
+        REPO="${{ inputs.repo }}"
+        if [ -z "$ORG" ] || [ -z "$REPO" ]; then
+          IFS='/' read -r ORG REPO <<< "${{ github.repository }}"
+        fi
+        if [ -z "$CONFIG_FILE" ]; then
+          CONFIG_FILE="config/$ORG/$REPO.yml"
+        fi
+        yamllint ${{ github.action_path }}/$CONFIG_FILE ${{ github.action_path }}/${{ inputs.central-config-file }}
       shell: bash
 
     - name: Run Config Validator
@@ -87,6 +96,7 @@ runs:
         INPUT_REPO: ${{ inputs.repo }}
         INPUT_CONFIG_FILE: ${{ inputs.config-file }}
         INPUT_CENTRAL_CONFIG_FILE: ${{ inputs.central-config-file }}
+        ACTION_PATH: ${{ github.action_path }}
 
     - name: Run Secret Fetcher
       run: python ${{ github.action_path }}/scripts/secret_fetcher.py
@@ -96,6 +106,7 @@ runs:
         INPUT_REPO: ${{ inputs.repo }}
         INPUT_CONFIG_FILE: ${{ inputs.config-file }}
         INPUT_CENTRAL_CONFIG_FILE: ${{ inputs.central-config-file }}
+        ACTION_PATH: ${{ github.action_path }}
         INPUT_PROVIDER: ${{ inputs.provider }}
         INPUT_ENV: ${{ inputs.env }}
         SECRETS_JSON: ${{ inputs.secrets-json }}
