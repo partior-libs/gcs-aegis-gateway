@@ -1,0 +1,4 @@
+aegis-link:
+  - name: my_secret
+    env: dev
+    type: gh-secret

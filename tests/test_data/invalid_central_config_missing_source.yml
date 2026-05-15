@@ -1,0 +1,6 @@
+aegis-gateway:
+  - name: my_secret
+    env: dev
+    type: gcp-secret-manager
+    config:
+      other_key: some_value

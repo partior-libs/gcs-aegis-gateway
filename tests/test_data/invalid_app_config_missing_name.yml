@@ -1,0 +1,6 @@
+aegis-link:
+  - env: dev
+    type: gh-secret
+    outputs:
+      - type: value
+        destination: MY_SECRET

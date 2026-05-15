@@ -44,15 +44,3 @@ aegis-link:
     outputs:
       - type: value
         destination: AWS_SECRET_DEV
-
-
-  # k8s:
-  #   my-secret-key:
-  #     project:  prj-dev-platform-services
-  #     env: sitnet01
-      # outputs:
-      #   - type: file
-  #         destination: ./tmp/secrets/my-k8s-secret.key
-
-  # vault:
-    # TODO: Add section for value
