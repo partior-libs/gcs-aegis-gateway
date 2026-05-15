@@ -1,0 +1,97 @@
+import os
+import sys
+import yaml
+import logging
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+logger = logging.getLogger(__name__)
+
+def validate_config(file_path, is_central=False):
+    if not os.path.exists(file_path):
+        logger.error(f"Config file not found: {file_path}")
+        return False
+        
+    try:
+        with open(file_path, "r") as f:
+            config = yaml.safe_load(f)
+    except Exception as e:
+        logger.error(f"Failed to read/parse {file_path}: {e}")
+        return False
+        
+    expected_key = "aegis-gateway" if is_central else "aegis-link"
+        
+    if not config or expected_key not in config:
+        logger.warning(f"No {expected_key} found in {file_path}.")
+        return True
+        
+    items = config.get(expected_key, [])
+    if not isinstance(items, list):
+        logger.error(f"[{file_path}] {expected_key} should be a list.")
+        return False
+
+    seen = set()
+    is_valid = True
+    
+    for idx, item in enumerate(items):
+        name = item.get("name")
+        env = item.get("env")
+        
+        if not name:
+            logger.error(f"[{file_path}] Item at index {idx} is missing name.")
+            is_valid = False
+            continue
+            
+        if not name.islower():
+            logger.error(f"[{file_path}] Secret name {name} must be lowercase.")
+            is_valid = False
+            
+        identifier = (name, env)
+        if identifier in seen:
+            logger.error(f"[{file_path}] Duplicate identifier found for name={name} and env={env}.")
+            is_valid = False
+        else:
+            seen.add(identifier)
+            
+        # Check specific required fields based on config type
+        if is_central:
+            if "config" not in item or "source" not in item["config"]:
+                logger.error(f"[{file_path}] Item {name} env {env} is missing config.source.")
+                is_valid = False
+        else:
+            if "outputs" not in item or not item["outputs"]:
+                logger.error(f"[{file_path}] Item {name} env {env} is missing outputs.")
+                is_valid = False
+                
+    return is_valid
+
+def main():
+    logger.info("Starting config validation...")
+    
+    org = os.environ.get("INPUT_ORG")
+    repo = os.environ.get("INPUT_REPO")
+    config_file = os.environ.get("INPUT_CONFIG_FILE")
+    central_config_file = os.environ.get("INPUT_CENTRAL_CONFIG_FILE", "config/central_config.yml")
+
+    # Default config path if org and repo are provided
+    if not config_file:
+        if org and repo:
+            config_file = f"./config/{org}/{repo}.yml"
+        else:
+            logger.error("Either config-file input or both org and repo inputs are required.")
+            sys.exit(1)
+            
+    logger.info(f"Validating app config: {config_file}")
+    logger.info(f"Validating central config: {central_config_file}")
+    
+    valid_app = validate_config(config_file, is_central=False)
+    valid_central = validate_config(central_config_file, is_central=True)
+    
+    if not valid_app or not valid_central:
+        logger.error("Configuration validation failed. Please fix the errors above.")
+        sys.exit(1)
+        
+    logger.info("Configuration validation passed successfully!")
+
+if __name__ == "__main__":
+    main()
+

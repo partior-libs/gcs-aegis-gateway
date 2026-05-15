@@ -1,0 +1,46 @@
+---
+aegis-gateway:
+  - name: dummy_dev_secret_1
+    env: devnet02
+    type: gh-secret
+    config:
+      source: DUMMY_SECRET_VALUE_1
+
+  - name: dummy_dev_var_1
+    env: devnet02
+    type: gh-variable
+    config:
+      source: DUMMY_VAR_1
+
+  - name: dummy_sitnet_secret_1
+    env: sitnet01
+    type: gh-secret
+    config:
+      source: DUMMY_SECRET_VALUE_2
+
+  - name: dummy_sitnet_var_1
+    env: sitnet01
+    type: gh-variable
+    config:
+      source: DUMMY_VAR_2
+
+  - name: test-secret-1
+    env: devnet02
+    type: gcp-secret-manager
+    config:
+      source: projects/925373772861/secrets/test-secret-1
+      project: prj-dev-devsecops01
+
+  - name: test-secret-1
+    env: sitnet01
+    type: gcp-secret-manager
+    config:
+      source: projects/925373772861/secrets/test-secret-2/versions/3
+      project: prj-dev-devsecops01
+
+  - name: aws-test-secret-2
+    env: devnet02
+    type: aws-secret-manager
+    config:
+      source: "arn:aws:secretsmanager:ap-southeast-1:460216730582:secret:aws-test-secret-2-c43OCT"
+      region: ap-southeast-1

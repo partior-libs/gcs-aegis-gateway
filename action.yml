@@ -1,0 +1,102 @@
+name: 'AegisGateway Secret Fetcher'
+description: 'AegisGateway: Fetches secrets from various providers based on an AegisLink configuration.'
+
+inputs:
+  org:
+    description: 'GitHub organisation name'
+    required: false
+  repo:
+    description: 'GitHub repository name'
+    required: false
+  config-file:
+    description: 'Path to the YAML config file (defaults to ./config/<org>/<repo>.yml)'
+    required: false
+  central-config-file:
+    description: 'Path to the central YAML config file (defaults to ./config/central_config.yml)'
+    required: false
+    default: 'config/central_config.yml'
+  provider:
+    description: 'Specific provider to fetch (default: all)'
+    required: false
+    default: 'all'
+  secrets-json:
+    description: 'JSON string of GitHub secrets'
+    required: false
+  vars-json:
+    description: 'JSON string of GitHub variables'
+    required: false
+  env:
+    description: 'Environment to filter secrets for'
+    required: false
+  gcp-workload-identity-provider:
+    description: 'The GCP Workload Identity Provider to authenticate with'
+    required: false
+  gcp-service-account:
+    description: 'The GCP Service Account to authenticate as'
+    required: false
+  aws-region:
+    description: 'The AWS region'
+    required: false
+  aws-role-to-assume:
+    description: 'The AWS role to assume'
+    required: false
+  aws-role-session-name:
+    description: 'The AWS role session name'
+    required: false
+    default: 'gh-actions-session'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Authenticate to Google Cloud
+      if: ${{ inputs.gcp-workload-identity-provider != '' && inputs.gcp-service-account != '' }}
+      uses: google-github-actions/auth@v2
+      with:
+        workload_identity_provider: ${{ inputs.gcp-workload-identity-provider }}
+        service_account: ${{ inputs.gcp-service-account }}
+
+    - name: Authenticate to AWS Cloud
+      if: ${{ inputs.aws-region != '' && inputs.aws-role-to-assume != '' }}
+      uses: aws-actions/configure-aws-credentials@v6
+      with:
+        aws-region: ${{ inputs.aws-region }}
+        role-to-assume: ${{ inputs.aws-role-to-assume }}
+        role-session-name: ${{ inputs.aws-role-session-name }}
+
+    - name: Install Dependencies
+      run: |
+        python3 --version
+        pip install pyyaml google-cloud-secret-manager boto3 yamllint
+      shell: bash
+
+    - name: Run yamllint
+      run: |
+        yamllint ${{ inputs.config-file }} ${{ inputs.central-config-file }}
+      shell: bash
+
+    - name: Run Config Validator
+      run: python ${{ github.action_path }}/scripts/config_validator.py
+      shell: bash
+      env:
+        INPUT_ORG: ${{ inputs.org }}
+        INPUT_REPO: ${{ inputs.repo }}
+        INPUT_CONFIG_FILE: ${{ inputs.config-file }}
+        INPUT_CENTRAL_CONFIG_FILE: ${{ inputs.central-config-file }}
+
+    - name: Run Secret Fetcher
+      run: python ${{ github.action_path }}/scripts/secret_fetcher.py
+      shell: bash
+      env:
+        INPUT_ORG: ${{ inputs.org }}
+        INPUT_REPO: ${{ inputs.repo }}
+        INPUT_CONFIG_FILE: ${{ inputs.config-file }}
+        INPUT_CENTRAL_CONFIG_FILE: ${{ inputs.central-config-file }}
+        INPUT_PROVIDER: ${{ inputs.provider }}
+        INPUT_ENV: ${{ inputs.env }}
+        SECRETS_JSON: ${{ inputs.secrets-json }}
+        VARS_JSON: ${{ inputs.vars-json }}
