@@ -28,19 +28,19 @@ aegis-gateway:
     env: devnet02
     type: gcp-secret-manager
     config:
-      source: projects/925373772861/secrets/test-secret-1
-      project: prj-dev-devsecops01
+      source: projects/732439461432/secrets/psql-tessera-ptr4ae-user-username
+      project: prj-dev-devnet02
 
   - name: test-secret-1
     env: sitnet01
     type: gcp-secret-manager
     config:
-      source: projects/925373772861/secrets/test-secret-2/versions/3
-      project: prj-dev-devsecops01
+      source: projects/732439461432/secrets/psql-dapps-ptr4ae-reader-username
+      project: prj-dev-devnet02
 
   - name: aws-test-secret-2
     env: devnet02
     type: aws-secret-manager
     config:
-      source: "arn:aws:secretsmanager:ap-southeast-1:460216730582:secret:aws-test-secret-2-c43OCT"
-      region: ap-southeast-1
+      source: "arn:aws:secretsmanager:eu-west-1:081403079551:secret:psql-dapps-ptr4ae-user-JRIoC8"
+      region: eu-west-1
