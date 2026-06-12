@@ -71,6 +71,7 @@ def main():
     repo = os.environ.get("INPUT_REPO")
     config_file = os.environ.get("INPUT_CONFIG_FILE")
     central_config_file = os.environ.get("INPUT_CENTRAL_CONFIG_FILE", "config/central_config.yml")
+    auth_profiles_file = os.environ.get("INPUT_AUTH_PROFILES_FILE", "config/auth_profiles.yml")
     action_path = os.environ.get("ACTION_PATH", ".")
 
     github_repository = os.environ.get("GITHUB_REPOSITORY", "")
@@ -90,14 +91,29 @@ def main():
         config_file = os.path.join(action_path, config_file) if not os.path.isabs(config_file) else config_file
             
     central_config_file = os.path.join(action_path, central_config_file) if not os.path.isabs(central_config_file) else central_config_file
+    auth_profiles_file = os.path.join(action_path, auth_profiles_file) if not os.path.isabs(auth_profiles_file) else auth_profiles_file
 
     logger.info(f"Validating app config: {config_file}")
     logger.info(f"Validating central config: {central_config_file}")
+    logger.info(f"Validating auth profiles: {auth_profiles_file}")
     
     valid_app = validate_config(config_file, is_central=False)
     valid_central = validate_config(central_config_file, is_central=True)
     
-    if not valid_app or not valid_central:
+    # Simple validation for auth profiles: just check if it's readable and a dictionary
+    valid_auth = True
+    if os.path.exists(auth_profiles_file):
+        try:
+            with open(auth_profiles_file, "r") as f:
+                auth_data = yaml.safe_load(f)
+                if auth_data and not isinstance(auth_data, dict):
+                    logger.error(f"[{auth_profiles_file}] Auth profiles file should be a dictionary.")
+                    valid_auth = False
+        except Exception as e:
+            logger.error(f"Failed to read/parse {auth_profiles_file}: {e}")
+            valid_auth = False
+    
+    if not valid_app or not valid_central or not valid_auth:
         logger.error("Configuration validation failed. Please fix the errors above.")
         sys.exit(1)
         

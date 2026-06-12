@@ -15,6 +15,10 @@ inputs:
     description: 'Path to the central YAML config file (defaults to ./config/central_config.yml)'
     required: false
     default: 'config/central_config.yml'
+  auth-profiles-file:
+    description: 'Path to the auth profiles YAML file (defaults to ./config/auth_profiles.yml)'
+    required: false
+    default: 'config/auth_profiles.yml'
   provider:
     description: 'Specific provider to fetch (default: all)'
     required: false
@@ -31,15 +35,19 @@ inputs:
   gcp-workload-identity-provider:
     description: 'The GCP Workload Identity Provider to authenticate with'
     required: false
+    default: 'projects/313248254658/locations/global/workloadIdentityPools/wip-tf-core-shared/providers/wipp-tf-core-shared'
   gcp-service-account:
     description: 'The GCP Service Account to authenticate as'
     required: false
+    default: 'sa-gh-actions@prj-dev-platform-services.iam.gserviceaccount.com'
   aws-region:
     description: 'The AWS region'
     required: false
+    default: 'ap-southeast-1'
   aws-role-to-assume:
     description: 'The AWS role to assume'
     required: false
+    default: 'arn:aws:iam::906724447956:role/role-gh-actions'
   aws-role-session-name:
     description: 'The AWS role session name'
     required: false
@@ -71,7 +79,7 @@ runs:
     - name: Install Dependencies
       run: |
         python3 --version
-        pip install pyyaml google-cloud-secret-manager boto3 yamllint
+        pip install pyyaml google-auth google-cloud-secret-manager boto3 yamllint
       shell: bash
 
     - name: Run yamllint
@@ -85,7 +93,7 @@ runs:
         if [ -z "$CONFIG_FILE" ]; then
           CONFIG_FILE="config/$ORG/$REPO.yml"
         fi
-        yamllint ${{ github.action_path }}/$CONFIG_FILE ${{ github.action_path }}/${{ inputs.central-config-file }}
+        yamllint ${{ github.action_path }}/$CONFIG_FILE ${{ github.action_path }}/${{ inputs.central-config-file }} ${{ github.action_path }}/${{ inputs.auth-profiles-file }}
       shell: bash
 
     - name: Run Config Validator
@@ -96,6 +104,7 @@ runs:
         INPUT_REPO: ${{ inputs.repo }}
         INPUT_CONFIG_FILE: ${{ inputs.config-file }}
         INPUT_CENTRAL_CONFIG_FILE: ${{ inputs.central-config-file }}
+        INPUT_AUTH_PROFILES_FILE: ${{ inputs.auth-profiles-file }}
         ACTION_PATH: ${{ github.action_path }}
 
     - name: Run Secret Fetcher
@@ -106,6 +115,7 @@ runs:
         INPUT_REPO: ${{ inputs.repo }}
         INPUT_CONFIG_FILE: ${{ inputs.config-file }}
         INPUT_CENTRAL_CONFIG_FILE: ${{ inputs.central-config-file }}
+        INPUT_AUTH_PROFILES_FILE: ${{ inputs.auth-profiles-file }}
         ACTION_PATH: ${{ github.action_path }}
         INPUT_PROVIDER: ${{ inputs.provider }}
         INPUT_ENV: ${{ inputs.env }}

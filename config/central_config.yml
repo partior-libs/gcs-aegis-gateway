@@ -30,6 +30,7 @@ aegis-gateway:
     config:
       source: projects/732439461432/secrets/psql-tessera-ptr4ae-user-username
       project: prj-dev-devnet02
+      auth-profile: gcp-devnet02-target
 
   - name: test-secret-1
     env: sitnet01
@@ -44,3 +45,4 @@ aegis-gateway:
     config:
       source: "arn:aws:secretsmanager:eu-west-1:081403079551:secret:psql-dapps-ptr4ae-user-JRIoC8"
       region: eu-west-1
+      auth-profile: aws-eu-deploy-target
