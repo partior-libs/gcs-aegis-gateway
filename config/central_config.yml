@@ -1,29 +1,5 @@
 ---
 aegis-gateway:
-  - name: dummy_dev_secret_1
-    env: devnet02
-    type: gh-secret
-    config:
-      source: DUMMY_SECRET_VALUE_1
-
-  - name: dummy_dev_var_1
-    env: devnet02
-    type: gh-variable
-    config:
-      source: DUMMY_VAR_1
-
-  - name: dummy_sitnet_secret_1
-    env: sitnet01
-    type: gh-secret
-    config:
-      source: DUMMY_SECRET_VALUE_2
-
-  - name: dummy_sitnet_var_1
-    env: sitnet01
-    type: gh-variable
-    config:
-      source: DUMMY_VAR_2
-
   - name: test-secret-1
     env: devnet02
     type: gcp-secret-manager
@@ -32,13 +8,6 @@ aegis-gateway:
       project: prj-dev-devnet02
       auth-profile: gcp-devnet02-target
 
-  - name: test-secret-1
-    env: sitnet01
-    type: gcp-secret-manager
-    config:
-      source: projects/732439461432/secrets/psql-dapps-ptr5gu-user
-      project: prj-dev-devnet02
-
   - name: aws-test-secret-2
     env: devnet02
     type: aws-secret-manager
@@ -46,3 +15,12 @@ aegis-gateway:
       source: "arn:aws:secretsmanager:eu-west-1:081403079551:secret:psql-dapps-ptr4ae-user-JRIoC8"
       region: eu-west-1
       auth-profile: aws-eu-deploy-target
+
+  - name: test-secret-1
+    env: sitnet01
+    type: gcp-secret-manager
+    config:
+      source: projects/732439461432/secrets/psql-dapps-ptr5gu-user
+      project: prj-dev-devnet02
+
+  

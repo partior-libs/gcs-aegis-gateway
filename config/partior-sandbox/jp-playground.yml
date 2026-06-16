@@ -1,26 +1,26 @@
 aegis-link:
-  - name: dummy_dev_secret_1
-    type: gh-secret
-    env: devnet02
-    outputs:
-      - type: value
-        destination: MY_WF_SECRET_KEY_1
-      - type: file
-        destination: ./tmp/secrets/dummy_secret_1.txt
+  # - name: dummy_dev_secret_1
+  #   type: gh-secret
+  #   env: devnet02
+  #   outputs:
+  #     - type: value
+  #       destination: MY_WF_SECRET_KEY_1
+  #     - type: file
+  #       destination: ./tmp/secrets/dummy_secret_1.txt
 
-  - name: dummy_sitnet_secret_1
-    type: gh-secret
-    env: sitnet01
-    outputs:
-      - type: value
-        destination: MY_WF_SECRET_KEY_2
+  # - name: dummy_sitnet_secret_1
+  #   type: gh-secret
+  #   env: sitnet01
+  #   outputs:
+  #     - type: value
+  #       destination: MY_WF_SECRET_KEY_2
 
-  - name: dummy_dev_var_1
-    type: gh-variable
-    env: devnet02
-    outputs:
-      - type: value
-        destination: MY_WF_VAR_1
+  # - name: dummy_dev_var_1
+  #   type: gh-variable
+  #   env: devnet02
+  #   outputs:
+  #     - type: value
+  #       destination: MY_WF_VAR_1
 
   - name: test-secret-1
     env: devnet02

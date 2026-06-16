@@ -3,7 +3,13 @@ import sys
 import yaml
 import json
 import logging
+import threading
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+# Locks to prevent race conditions during concurrent file writes
+env_file_lock = threading.Lock()
+file_write_lock = threading.Lock()
 
 try:
     from google.cloud import secretmanager
@@ -26,21 +32,23 @@ logger = logging.getLogger(__name__)
 def write_to_env(destination, secret_value):
     github_env = os.environ.get('GITHUB_ENV')
     if github_env:
-        with open(github_env, 'a') as f:
-            # Use dynamic delimiter for multiline support to prevent collisions
-            import uuid
-            delimiter = f"EOF-{uuid.uuid4()}"
-            f.write(f"{destination}<<{delimiter}\n{secret_value}\n{delimiter}\n")
+        with env_file_lock:
+            with open(github_env, 'a') as f:
+                # Use dynamic delimiter for multiline support to prevent collisions
+                import uuid
+                delimiter = f"EOF-{uuid.uuid4()}"
+                f.write(f"{destination}<<{delimiter}\n{secret_value}\n{delimiter}\n")
         logger.info(f"Successfully set workflow output variable '{destination}'.")
     else:
         logger.warning(f"GITHUB_ENV not found. Would set '{destination}'.")
 
 def write_to_file(destination, secret_value):
     dest_path = Path(destination)
-    # Create directories if they do not exist
-    dest_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(dest_path, 'w') as f:
-        f.write(secret_value)
+    with file_write_lock:
+        # Create directories if they do not exist
+        dest_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(dest_path, 'w') as f:
+            f.write(secret_value)
     logger.info(f"Successfully wrote secret to file '{destination}'.")
 
 def get_gh_secret(source, github_secrets):
@@ -237,24 +245,52 @@ def main():
         logger.warning("No 'aegis-link' key found in the configuration.")
         return
 
-    for secret_config in secret_list:
-        provider = secret_config.get('type')
-        secret_name = secret_config.get('name')
-        target_env = secret_config.get('env')
+    # Use ThreadPoolExecutor to fetch secrets concurrently
+    futures = []
+    has_errors = False
+    
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        for secret_config in secret_list:
+            provider = secret_config.get('type')
+            secret_name = secret_config.get('name')
+            target_env = secret_config.get('env')
+    
+            if not provider or not secret_name:
+                logger.warning("Skipping an entry due to missing 'type' or 'name'.")
+                continue
+                
+            if provider_filter != 'all' and provider != provider_filter:
+                continue
+                
+            # Filter by environment if an env input was provided and the secret has a specific env
+            if env_filter and target_env and target_env != env_filter:
+                logger.info(f"Skipping secret '{secret_name}' as its env '{target_env}' does not match requested env '{env_filter}'.")
+                continue
+                
+            futures.append(
+                executor.submit(
+                    process_secret, 
+                    provider, 
+                    secret_name, 
+                    target_env, 
+                    secret_config, 
+                    github_secrets, 
+                    github_vars, 
+                    central_config, 
+                    auth_profiles
+                )
+            )
 
-        if not provider or not secret_name:
-            logger.warning("Skipping an entry due to missing 'type' or 'name'.")
-            continue
-            
-        if provider_filter != 'all' and provider != provider_filter:
-            continue
-            
-        # Filter by environment if an env input was provided and the secret has a specific env
-        if env_filter and target_env and target_env != env_filter:
-            logger.info(f"Skipping secret '{secret_name}' as its env '{target_env}' does not match requested env '{env_filter}'.")
-            continue
-            
-        process_secret(provider, secret_name, target_env, secret_config, github_secrets, github_vars, central_config, auth_profiles)
+    for future in as_completed(futures):
+        try:
+            future.result() # Raises exception if the task failed
+        except Exception as e:
+            logger.error(f"A secret fetching task failed: {e}")
+            has_errors = True
+
+    if has_errors:
+        logger.error("One or more secret fetching tasks failed. Aborting.")
+        sys.exit(1)
 
 def process_secret(provider, secret_name, target_env, secret_config, github_secrets, github_vars, central_config, auth_profiles):
     logger.info(f"Processing secret name: {secret_name} (Provider: {provider}, Env: {target_env})")
@@ -300,7 +336,7 @@ def process_secret(provider, secret_name, target_env, secret_config, github_secr
         
     if not secret_value:
         logger.error(f"Failed to retrieve value for '{secret_name}'. Aborting.")
-        sys.exit(1)
+        raise Exception(f"Failed to retrieve value for '{secret_name}'.")
         
     # 2. Mask the secret in GitHub Actions logs
     for line in secret_value.splitlines():
@@ -324,7 +360,7 @@ def process_secret(provider, secret_name, target_env, secret_config, github_secr
             write_to_file(destination, secret_value)
         else:
             logger.error(f"Unsupported output type '{output_type}'.")
-            sys.exit(1)
+            raise Exception(f"Unsupported output type '{output_type}'.")
 
 if __name__ == "__main__":
     main()

@@ -21,3 +21,5 @@ aegis-link:
     outputs:
       - type: value
         destination: AWS_SECRET_DEV
+      - type: file
+        destination: ./tmp/secrets/aws_secret_1.txt
