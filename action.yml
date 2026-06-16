@@ -9,16 +9,16 @@ inputs:
     description: 'GitHub repository name'
     required: false
   config-file:
-    description: 'Path to the YAML config file (defaults to ./config/<org>/<repo>.yml)'
+    description: 'Path to the YAML config file (defaults to ./config/<org>/<repo>.yaml)'
     required: false
   central-config-file:
-    description: 'Path to the central YAML config file (defaults to ./config/central_config.yml)'
+    description: 'Path to the central YAML config file (defaults to ./config/central_config.yaml)'
     required: false
-    default: 'config/central_config.yml'
+    default: 'config/central_config.yaml'
   auth-profiles-file:
-    description: 'Path to the auth profiles YAML file (defaults to ./config/auth_profiles.yml)'
+    description: 'Path to the auth profiles YAML file (defaults to ./config/auth_profiles.yaml)'
     required: false
-    default: 'config/auth_profiles.yml'
+    default: 'config/auth_profiles.yaml'
   provider:
     description: 'Specific provider to fetch (default: all)'
     required: false
@@ -91,7 +91,7 @@ runs:
           IFS='/' read -r ORG REPO <<< "${{ github.repository }}"
         fi
         if [ -z "$CONFIG_FILE" ]; then
-          CONFIG_FILE="config/$ORG/$REPO.yml"
+          CONFIG_FILE="config/$ORG/$REPO.yaml"
         fi
         yamllint -d "{rules: {line-length: disable}}" ${{ github.action_path }}/$CONFIG_FILE ${{ github.action_path }}/${{ inputs.central-config-file }} ${{ github.action_path }}/${{ inputs.auth-profiles-file }}
       shell: bash

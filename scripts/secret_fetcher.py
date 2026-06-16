@@ -166,8 +166,8 @@ def main():
     org = os.environ.get('INPUT_ORG')
     repo = os.environ.get('INPUT_REPO')
     config_file = os.environ.get('INPUT_CONFIG_FILE')
-    central_config_file = os.environ.get('INPUT_CENTRAL_CONFIG_FILE', 'config/central_config.yml')
-    auth_profiles_file = os.environ.get('INPUT_AUTH_PROFILES_FILE', 'config/auth_profiles.yml')
+    central_config_file = os.environ.get('INPUT_CENTRAL_CONFIG_FILE', 'config/central_config.yaml')
+    auth_profiles_file = os.environ.get('INPUT_AUTH_PROFILES_FILE', 'config/auth_profiles.yaml')
     action_path = os.environ.get('ACTION_PATH', '.')
     provider_filter = os.environ.get('INPUT_PROVIDER', 'all')
     env_filter = os.environ.get('INPUT_ENV')
@@ -183,7 +183,7 @@ def main():
     # Default config path if org and repo are provided
     if not config_file:
         if org and repo:
-            config_file = os.path.join(action_path, "config", org, f"{repo}.yml")
+            config_file = os.path.join(action_path, "config", org, f"{repo}.yaml")
         else:
             logger.error("Either 'config-file' input or both 'org' and 'repo' inputs are required.")
             sys.exit(1)
