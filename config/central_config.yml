@@ -4,7 +4,7 @@ aegis-gateway:
     env: devnet02
     type: gcp-secret-manager
     config:
-      source: projects/732439461432/secrets/psql-dapps-ptr5gu-reader
+      source: projects/732439461432/secrets/psql-dapps-ptr5gu-reader-username
       project: prj-dev-devnet02
       auth-profile: gcp-devnet02-target
 
@@ -12,7 +12,7 @@ aegis-gateway:
     env: devnet02
     type: aws-secret-manager
     config:
-      source: "arn:aws:secretsmanager:eu-west-1:081403079551:secret:psql-dapps-ptr4ae-user-JRIoC8"
+      source: psql-dapps-ptr4ae-user-username
       region: eu-west-1
       auth-profile: aws-eu-deploy-target
 
@@ -23,4 +23,3 @@ aegis-gateway:
       source: projects/732439461432/secrets/psql-dapps-ptr5gu-user
       project: prj-dev-devnet02
 
-  

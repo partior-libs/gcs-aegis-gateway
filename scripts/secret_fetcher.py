@@ -69,7 +69,7 @@ def get_gh_variable(source, github_vars):
         return None
     return secret_value
 
-def get_gcp_secret(secret_name, source, auth_config=None):
+def get_gcp_secret(secret_name, source, auth_config=None, version=None):
     logger.info(f"Fetching GCP secret: {secret_name}")
     if not secretmanager:
         logger.error("google-cloud-secret-manager or google-auth is not installed. Please add it to your requirements.")
@@ -81,7 +81,8 @@ def get_gcp_secret(secret_name, source, auth_config=None):
         
     # Default to latest version if no version is specified
     if "/versions/" not in source:
-        source = f"{source}/versions/latest"
+        target_version = version if version else "latest"
+        source = f"{source}/versions/{target_version}"
         
     try:
         if auth_config and auth_config.get('type') == 'gcp-impersonate':
@@ -103,7 +104,7 @@ def get_gcp_secret(secret_name, source, auth_config=None):
         logger.error(f"Failed to fetch GCP secret '{source}': {e}")
         return None
 
-def get_aws_secret(secret_name, source, auth_config=None):
+def get_aws_secret(secret_name, source, auth_config=None, version=None):
     logger.info(f"Fetching AWS secret: {secret_name}")
     if not boto3:
         logger.error("boto3 is not installed. Please add it to your requirements.")
@@ -135,7 +136,11 @@ def get_aws_secret(secret_name, source, auth_config=None):
         else:
             client = boto3.client('secretsmanager')
 
-        response = client.get_secret_value(SecretId=source)
+        kwargs = {'SecretId': source}
+        if version:
+             kwargs['VersionStage'] = version
+
+        response = client.get_secret_value(**kwargs)
         if 'SecretString' in response:
             return response['SecretString']
         else:
@@ -308,6 +313,8 @@ def process_secret(provider, secret_name, target_env, secret_config, github_secr
         return
 
     source = mapped_config.get('source')
+    version = mapped_config.get('version')
+    
     if not source:
         logger.error(f"Could not find 'source' in central config for name='{secret_name}', env='{target_env}', type='{provider}'")
         return
@@ -327,9 +334,9 @@ def process_secret(provider, secret_name, target_env, secret_config, github_secr
     elif provider == 'gh-variable':
         secret_value = get_gh_variable(source, github_vars)
     elif provider in ['gcp', 'gcp-secret-manager']:
-        secret_value = get_gcp_secret(secret_name, source, auth_config)
+        secret_value = get_gcp_secret(secret_name, source, auth_config, version)
     elif provider in ['aws', 'aws-secret-manager']:
-        secret_value = get_aws_secret(secret_name, source, auth_config)
+        secret_value = get_aws_secret(secret_name, source, auth_config, version)
     else:
         logger.error(f"Provider type '{provider}' is not supported by this script currently.")
         return
