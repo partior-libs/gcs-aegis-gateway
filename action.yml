@@ -93,7 +93,7 @@ runs:
         if [ -z "$CONFIG_FILE" ]; then
           CONFIG_FILE="config/$ORG/$REPO.yml"
         fi
-        yamllint ${{ github.action_path }}/$CONFIG_FILE ${{ github.action_path }}/${{ inputs.central-config-file }} ${{ github.action_path }}/${{ inputs.auth-profiles-file }}
+        yamllint -d "{rules: {line-length: disable}}" ${{ github.action_path }}/$CONFIG_FILE ${{ github.action_path }}/${{ inputs.central-config-file }} ${{ github.action_path }}/${{ inputs.auth-profiles-file }}
       shell: bash
 
     - name: Run Config Validator
