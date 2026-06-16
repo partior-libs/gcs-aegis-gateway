@@ -70,9 +70,22 @@ def main():
     org = os.environ.get("INPUT_ORG")
     repo = os.environ.get("INPUT_REPO")
     config_file = os.environ.get("INPUT_CONFIG_FILE")
-    central_config_file = os.environ.get("INPUT_CENTRAL_CONFIG_FILE", "config/central_config.yaml")
+    central_config_file = os.environ.get("INPUT_CENTRAL_CONFIG_FILE")
     auth_profiles_file = os.environ.get("INPUT_AUTH_PROFILES_FILE", "config/auth_profiles.yaml")
     action_path = os.environ.get("ACTION_PATH", ".")
+    env_filter = os.environ.get("INPUT_ENV")
+    
+    central_files_to_load = []
+    if central_config_file:
+        central_files_to_load.append(central_config_file)
+    elif env_filter:
+        central_files_to_load.append(f"config/central_configs/{env_filter}.yaml")
+    else:
+        configs_dir = os.path.join(action_path, "config", "central_configs")
+        if os.path.exists(configs_dir):
+            for f in os.listdir(configs_dir):
+                if f.endswith(".yaml"):
+                    central_files_to_load.append(f"config/central_configs/{f}")
 
     github_repository = os.environ.get("GITHUB_REPOSITORY", "")
     if not org and github_repository:
@@ -90,15 +103,19 @@ def main():
     else:
         config_file = os.path.join(action_path, config_file) if not os.path.isabs(config_file) else config_file
             
-    central_config_file = os.path.join(action_path, central_config_file) if not os.path.isabs(central_config_file) else central_config_file
     auth_profiles_file = os.path.join(action_path, auth_profiles_file) if not os.path.isabs(auth_profiles_file) else auth_profiles_file
 
     logger.info(f"Validating app config: {config_file}")
-    logger.info(f"Validating central config: {central_config_file}")
     logger.info(f"Validating auth profiles: {auth_profiles_file}")
     
     valid_app = validate_config(config_file, is_central=False)
-    valid_central = validate_config(central_config_file, is_central=True)
+    
+    valid_central = True
+    for c_file in central_files_to_load:
+        c_path = os.path.join(action_path, c_file) if not os.path.isabs(c_file) else c_file
+        logger.info(f"Validating central config: {c_path}")
+        if not validate_config(c_path, is_central=True):
+            valid_central = False
     
     # Simple validation for auth profiles: just check if it's readable and a dictionary
     valid_auth = True

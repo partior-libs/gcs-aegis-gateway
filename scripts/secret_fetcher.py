@@ -154,10 +154,20 @@ def get_aws_secret(secret_name, source, auth_config=None, version=None):
 
 def find_secret_config(central_config, name, env, provider_type):
     central_items = central_config.get('aegis-gateway', [])
+    matches = []
+    
     for item in central_items:
-        if item.get('name') == name and item.get('env') == env and item.get('type') == provider_type:
-            return item.get('config', {})
-    return None
+        # Match if name and type match, and environment matches (including both being None)
+        if item.get('name') == name and item.get('type') == provider_type and item.get('env') == env:
+            matches.append(item.get('config', {}))
+            
+    if not matches:
+        return None
+    elif len(matches) > 1:
+        # Throw an exception if we have multiple identical matches so it's not a race condition
+        raise ValueError(f"Ambiguous configuration: Found {len(matches)} entries in central config matching name='{name}', env='{env}', type='{provider_type}'. Please remove duplicates.")
+        
+    return matches[0]
 
 def main():
     logger.info("Starting AegisGateway Secret Fetcher......")
@@ -166,11 +176,26 @@ def main():
     org = os.environ.get('INPUT_ORG')
     repo = os.environ.get('INPUT_REPO')
     config_file = os.environ.get('INPUT_CONFIG_FILE')
-    central_config_file = os.environ.get('INPUT_CENTRAL_CONFIG_FILE', 'config/central_config.yaml')
+    central_config_file = os.environ.get('INPUT_CENTRAL_CONFIG_FILE')
     auth_profiles_file = os.environ.get('INPUT_AUTH_PROFILES_FILE', 'config/auth_profiles.yaml')
     action_path = os.environ.get('ACTION_PATH', '.')
     provider_filter = os.environ.get('INPUT_PROVIDER', 'all')
     env_filter = os.environ.get('INPUT_ENV')
+    
+    central_files_to_load = []
+    if central_config_file:
+        central_files_to_load.append(central_config_file)
+    elif env_filter:
+        central_files_to_load.append(f"config/central_configs/{env_filter}.yaml")
+    else:
+        configs_dir = os.path.join(action_path, "config", "central_configs")
+        if os.path.exists(configs_dir):
+            for f in os.listdir(configs_dir):
+                if f.endswith(".yaml"):
+                    central_files_to_load.append(f"config/central_configs/{f}")
+        if not central_files_to_load:
+            logger.warning("No central configuration files found.")
+            
     secrets_json_str = os.environ.get('SECRETS_JSON', '{}')
     vars_json_str = os.environ.get('VARS_JSON', '{}')
 
@@ -223,15 +248,20 @@ def main():
         logger.error(f"Failed to read config file '{config_file}': {e}")
         sys.exit(1)
 
-    try:
-        with open(central_config_file, 'r') as f:
-            central_config = yaml.safe_load(f)
-    except FileNotFoundError:
-        logger.error(f"Central config file not found at '{central_config_file}'.")
-        sys.exit(1)
-    except Exception as e:
-        logger.error(f"Failed to read central config file '{central_config_file}': {e}")
-        sys.exit(1)
+    central_config = {'aegis-gateway': []}
+    for c_file in central_files_to_load:
+        c_path = os.path.join(action_path, c_file) if not os.path.isabs(c_file) else c_file
+        try:
+            with open(c_path, 'r') as f:
+                c_data = yaml.safe_load(f) or {}
+                if 'aegis-gateway' in c_data:
+                    central_config['aegis-gateway'].extend(c_data['aegis-gateway'])
+        except FileNotFoundError:
+            logger.error(f"Central config file not found at '{c_path}'.")
+            sys.exit(1)
+        except Exception as e:
+            logger.error(f"Failed to read central config file '{c_path}': {e}")
+            sys.exit(1)
 
     auth_profiles = {}
     if os.path.exists(auth_profiles_file):

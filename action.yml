@@ -12,9 +12,8 @@ inputs:
     description: 'Path to the YAML config file (defaults to ./config/<org>/<repo>.yaml)'
     required: false
   central-config-file:
-    description: 'Path to the central YAML config file (defaults to ./config/central_config.yaml)'
+    description: 'Path to the central YAML config file (defaults to ./config/central_configs/<env>.yaml or loads ALL yaml files in ./config/central_configs/)'
     required: false
-    default: 'config/central_config.yaml'
   auth-profiles-file:
     description: 'Path to the auth profiles YAML file (defaults to ./config/auth_profiles.yaml)'
     required: false
@@ -87,13 +86,24 @@ runs:
         CONFIG_FILE="${{ inputs.config-file }}"
         ORG="${{ inputs.org }}"
         REPO="${{ inputs.repo }}"
+        CENTRAL_CONFIG="${{ inputs.central-config-file }}"
+        ENV_FILTER="${{ inputs.env }}"
+        
         if [ -z "$ORG" ] || [ -z "$REPO" ]; then
           IFS='/' read -r ORG REPO <<< "${{ github.repository }}"
         fi
         if [ -z "$CONFIG_FILE" ]; then
           CONFIG_FILE="config/$ORG/$REPO.yaml"
         fi
-        yamllint -d "{rules: {line-length: disable}}" ${{ github.action_path }}/$CONFIG_FILE ${{ github.action_path }}/${{ inputs.central-config-file }} ${{ github.action_path }}/${{ inputs.auth-profiles-file }}
+        if [ -z "$CENTRAL_CONFIG" ]; then
+          if [ -n "$ENV_FILTER" ]; then
+            CENTRAL_CONFIG="config/central_configs/$ENV_FILTER.yaml"
+          else
+            CENTRAL_CONFIG="config/central_configs/*.yaml"
+          fi
+        fi
+        
+        yamllint -d "{rules: {line-length: disable}}" ${{ github.action_path }}/$CONFIG_FILE ${{ github.action_path }}/$CENTRAL_CONFIG ${{ github.action_path }}/${{ inputs.auth-profiles-file }}
       shell: bash
 
     - name: Run Config Validator
@@ -105,6 +115,7 @@ runs:
         INPUT_CONFIG_FILE: ${{ inputs.config-file }}
         INPUT_CENTRAL_CONFIG_FILE: ${{ inputs.central-config-file }}
         INPUT_AUTH_PROFILES_FILE: ${{ inputs.auth-profiles-file }}
+        INPUT_ENV: ${{ inputs.env }}
         ACTION_PATH: ${{ github.action_path }}
 
     - name: Run Secret Fetcher
