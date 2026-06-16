@@ -28,7 +28,7 @@ aegis-gateway:
     env: devnet02
     type: gcp-secret-manager
     config:
-      source: projects/732439461432/secrets/psql-tessera-ptr4ae-user-username
+      source: projects/732439461432/secrets/psql-dapps-ptr5gu-reader
       project: prj-dev-devnet02
       auth-profile: gcp-devnet02-target
 
@@ -36,7 +36,7 @@ aegis-gateway:
     env: sitnet01
     type: gcp-secret-manager
     config:
-      source: projects/732439461432/secrets/psql-dapps-ptr4ae-reader-username
+      source: projects/732439461432/secrets/psql-dapps-ptr5gu-user
       project: prj-dev-devnet02
 
   - name: aws-test-secret-2
