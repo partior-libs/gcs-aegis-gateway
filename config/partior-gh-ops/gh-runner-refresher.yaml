@@ -1,32 +1,907 @@
 aegis-link:
-  - name: psql-dapps-ptr1ga-client-cert
-    type: gcp-secret-manager
-    env: devnet02
-    outputs:
-      - type: file
-        destination: ./tmp/secrets/psql-dapps-ptr1ga-client-cert.pem
-
-  - name: test-secret-1
-    env: devnet02
-    type: gcp-secret-manager
-    outputs:
-      - type: value
-        destination: GCP_SECRET_DEV
-      - type: file
-        destination: ./tmp/secrets/dummy_secret_2.txt
-
-  - name: test-secret-1
-    env: sitnet01
-    type: gcp-secret-manager
-    outputs:
-      - type: value
-        destination: GCP_SECRET_SITNET
-
-  - name: aws-test-secret-2
-    env: devnet02
-    type: aws-secret-manager
-    outputs:
-      - type: value
-        destination: AWS_SECRET_DEV
-      - type: file
-        destination: ./tmp/secrets/aws_secret_1.txt
+- name: psql-dapps-ptr1ga-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr1ga-client-cert.pem
+- name: psql-dapps-ptr1ga-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr1ga-client-key.pem
+- name: psql-dapps-ptr1ga-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr1ga-server-ca.pem
+- name: psql-dapps-ptr1ga-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr1ga-admin-password.txt
+- name: psql-dapps-ptr1ga-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr1ga-admin-username.txt
+- name: psql-dapps-ptr1ga-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr1ga-user-password.txt
+- name: psql-dapps-ptr1ga-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr1ga-user-username.txt
+- name: psql-dapps-ptr1ga-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr1ga-read-password.txt
+- name: psql-dapps-ptr1ga-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr1ga-read-username.txt
+- name: psql-dapps-ptr2gu-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr2gu-client-cert.pem
+- name: psql-dapps-ptr2gu-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr2gu-client-key.pem
+- name: psql-dapps-ptr2gu-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr2gu-server-ca.pem
+- name: psql-dapps-ptr2gu-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr2gu-admin-password.txt
+- name: psql-dapps-ptr2gu-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr2gu-admin-username.txt
+- name: psql-dapps-ptr2gu-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr2gu-user-password.txt
+- name: psql-dapps-ptr2gu-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr2gu-user-username.txt
+- name: psql-dapps-ptr2gu-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr2gu-read-password.txt
+- name: psql-dapps-ptr2gu-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr2gu-read-username.txt
+- name: psql-dapps-ptr3ge-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr3ge-client-cert.pem
+- name: psql-dapps-ptr3ge-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr3ge-client-key.pem
+- name: psql-dapps-ptr3ge-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr3ge-server-ca.pem
+- name: psql-dapps-ptr3ge-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr3ge-admin-password.txt
+- name: psql-dapps-ptr3ge-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr3ge-admin-username.txt
+- name: psql-dapps-ptr3ge-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr3ge-user-password.txt
+- name: psql-dapps-ptr3ge-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr3ge-user-username.txt
+- name: psql-dapps-ptr3ge-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr3ge-read-password.txt
+- name: psql-dapps-ptr3ge-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr3ge-read-username.txt
+- name: psql-dapps-ptr5gu-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr5gu-client-cert.pem
+- name: psql-dapps-ptr5gu-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr5gu-client-key.pem
+- name: psql-dapps-ptr5gu-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr5gu-server-ca.pem
+- name: psql-dapps-ptr5gu-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr5gu-admin-password.txt
+- name: psql-dapps-ptr5gu-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr5gu-admin-username.txt
+- name: psql-dapps-ptr5gu-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr5gu-user-password.txt
+- name: psql-dapps-ptr5gu-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr5gu-user-username.txt
+- name: psql-dapps-ptr5gu-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr5gu-read-password.txt
+- name: psql-dapps-ptr5gu-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr5gu-read-username.txt
+- name: psql-dapps-ptr7ga-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr7ga-client-cert.pem
+- name: psql-dapps-ptr7ga-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr7ga-client-key.pem
+- name: psql-dapps-ptr7ga-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr7ga-server-ca.pem
+- name: psql-dapps-ptr7ga-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr7ga-admin-password.txt
+- name: psql-dapps-ptr7ga-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr7ga-admin-username.txt
+- name: psql-dapps-ptr7ga-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr7ga-user-password.txt
+- name: psql-dapps-ptr7ga-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr7ga-user-username.txt
+- name: psql-dapps-ptr7ga-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr7ga-read-password.txt
+- name: psql-dapps-ptr7ga-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr7ga-read-username.txt
+- name: psql-tessera-ptr1ga-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr1ga-client-cert.pem
+- name: psql-tessera-ptr1ga-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr1ga-client-key.pem
+- name: psql-tessera-ptr1ga-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr1ga-server-ca.pem
+- name: psql-tessera-ptr1ga-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr1ga-admin-password.txt
+- name: psql-tessera-ptr1ga-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr1ga-admin-username.txt
+- name: psql-tessera-ptr1ga-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr1ga-user-password.txt
+- name: psql-tessera-ptr1ga-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr1ga-user-username.txt
+- name: psql-tessera-ptr1ga-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr1ga-read-password.txt
+- name: psql-tessera-ptr1ga-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr1ga-read-username.txt
+- name: psql-tessera-ptr2gu-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr2gu-client-cert.pem
+- name: psql-tessera-ptr2gu-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr2gu-client-key.pem
+- name: psql-tessera-ptr2gu-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr2gu-server-ca.pem
+- name: psql-tessera-ptr2gu-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr2gu-admin-password.txt
+- name: psql-tessera-ptr2gu-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr2gu-admin-username.txt
+- name: psql-tessera-ptr2gu-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr2gu-user-password.txt
+- name: psql-tessera-ptr2gu-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr2gu-user-username.txt
+- name: psql-tessera-ptr2gu-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr2gu-read-password.txt
+- name: psql-tessera-ptr2gu-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr2gu-read-username.txt
+- name: psql-tessera-ptr3ge-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr3ge-client-cert.pem
+- name: psql-tessera-ptr3ge-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr3ge-client-key.pem
+- name: psql-tessera-ptr3ge-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr3ge-server-ca.pem
+- name: psql-tessera-ptr3ge-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr3ge-admin-password.txt
+- name: psql-tessera-ptr3ge-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr3ge-admin-username.txt
+- name: psql-tessera-ptr3ge-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr3ge-user-password.txt
+- name: psql-tessera-ptr3ge-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr3ge-user-username.txt
+- name: psql-tessera-ptr3ge-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr3ge-read-password.txt
+- name: psql-tessera-ptr3ge-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr3ge-read-username.txt
+- name: psql-tessera-ptr5gu-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr5gu-client-cert.pem
+- name: psql-tessera-ptr5gu-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr5gu-client-key.pem
+- name: psql-tessera-ptr5gu-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr5gu-server-ca.pem
+- name: psql-tessera-ptr5gu-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr5gu-admin-password.txt
+- name: psql-tessera-ptr5gu-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr5gu-admin-username.txt
+- name: psql-tessera-ptr5gu-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr5gu-user-password.txt
+- name: psql-tessera-ptr5gu-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr5gu-user-username.txt
+- name: psql-tessera-ptr5gu-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr5gu-read-password.txt
+- name: psql-tessera-ptr5gu-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr5gu-read-username.txt
+- name: psql-tessera-ptr7ga-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr7ga-client-cert.pem
+- name: psql-tessera-ptr7ga-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr7ga-client-key.pem
+- name: psql-tessera-ptr7ga-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr7ga-server-ca.pem
+- name: psql-tessera-ptr7ga-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr7ga-admin-password.txt
+- name: psql-tessera-ptr7ga-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr7ga-admin-username.txt
+- name: psql-tessera-ptr7ga-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr7ga-user-password.txt
+- name: psql-tessera-ptr7ga-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr7ga-user-username.txt
+- name: psql-tessera-ptr7ga-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr7ga-read-password.txt
+- name: psql-tessera-ptr7ga-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr7ga-read-username.txt
+- name: psql-keycloak-ptr1ga-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr1ga-client-cert.pem
+- name: psql-keycloak-ptr1ga-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr1ga-client-key.pem
+- name: psql-keycloak-ptr1ga-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr1ga-server-ca.pem
+- name: psql-keycloak-ptr1ga-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr1ga-admin-password.txt
+- name: psql-keycloak-ptr1ga-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr1ga-admin-username.txt
+- name: psql-keycloak-ptr1ga-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr1ga-user-password.txt
+- name: psql-keycloak-ptr1ga-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr1ga-user-username.txt
+- name: psql-keycloak-ptr1ga-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr1ga-read-password.txt
+- name: psql-keycloak-ptr1ga-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr1ga-read-username.txt
+- name: psql-keycloak-ptr2gu-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr2gu-client-cert.pem
+- name: psql-keycloak-ptr2gu-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr2gu-client-key.pem
+- name: psql-keycloak-ptr2gu-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr2gu-server-ca.pem
+- name: psql-keycloak-ptr2gu-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr2gu-admin-password.txt
+- name: psql-keycloak-ptr2gu-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr2gu-admin-username.txt
+- name: psql-keycloak-ptr2gu-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr2gu-user-password.txt
+- name: psql-keycloak-ptr2gu-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr2gu-user-username.txt
+- name: psql-keycloak-ptr2gu-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr2gu-read-password.txt
+- name: psql-keycloak-ptr2gu-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr2gu-read-username.txt
+- name: psql-keycloak-ptr3ge-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr3ge-client-cert.pem
+- name: psql-keycloak-ptr3ge-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr3ge-client-key.pem
+- name: psql-keycloak-ptr3ge-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr3ge-server-ca.pem
+- name: psql-keycloak-ptr3ge-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr3ge-admin-password.txt
+- name: psql-keycloak-ptr3ge-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr3ge-admin-username.txt
+- name: psql-keycloak-ptr3ge-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr3ge-user-password.txt
+- name: psql-keycloak-ptr3ge-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr3ge-user-username.txt
+- name: psql-keycloak-ptr3ge-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr3ge-read-password.txt
+- name: psql-keycloak-ptr3ge-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr3ge-read-username.txt
+- name: psql-keycloak-ptr5gu-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr5gu-client-cert.pem
+- name: psql-keycloak-ptr5gu-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr5gu-client-key.pem
+- name: psql-keycloak-ptr5gu-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr5gu-server-ca.pem
+- name: psql-keycloak-ptr5gu-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr5gu-admin-password.txt
+- name: psql-keycloak-ptr5gu-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr5gu-admin-username.txt
+- name: psql-keycloak-ptr5gu-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr5gu-user-password.txt
+- name: psql-keycloak-ptr5gu-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr5gu-user-username.txt
+- name: psql-keycloak-ptr5gu-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr5gu-read-password.txt
+- name: psql-keycloak-ptr5gu-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr5gu-read-username.txt
+- name: psql-keycloak-ptr7ga-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr7ga-client-cert.pem
+- name: psql-keycloak-ptr7ga-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr7ga-client-key.pem
+- name: psql-keycloak-ptr7ga-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr7ga-server-ca.pem
+- name: psql-keycloak-ptr7ga-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr7ga-admin-password.txt
+- name: psql-keycloak-ptr7ga-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr7ga-admin-username.txt
+- name: psql-keycloak-ptr7ga-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr7ga-user-password.txt
+- name: psql-keycloak-ptr7ga-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr7ga-user-username.txt
+- name: psql-keycloak-ptr7ga-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr7ga-read-password.txt
+- name: psql-keycloak-ptr7ga-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr7ga-read-username.txt
+- name: psql-keycloak-ptr8gu-client-cert
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr8gu-client-cert.pem
+- name: psql-keycloak-ptr8gu-client-key
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr8gu-client-key.pem
+- name: psql-keycloak-ptr8gu-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr8gu-server-ca.pem
+- name: psql-keycloak-ptr8gu-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr8gu-admin-password.txt
+- name: psql-keycloak-ptr8gu-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr8gu-admin-username.txt
+- name: psql-keycloak-ptr8gu-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr8gu-user-password.txt
+- name: psql-keycloak-ptr8gu-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr8gu-user-username.txt
+- name: psql-keycloak-ptr8gu-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr8gu-read-password.txt
+- name: psql-keycloak-ptr8gu-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr8gu-read-username.txt
+- name: oracledb-ptr9ou-server-ca
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/oracledb-ptr9ou-server-ca.pem
+- name: oracledb-ptr9ou-admin-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/oracledb-ptr9ou-admin-password.txt
+- name: oracledb-ptr9ou-admin-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/oracledb-ptr9ou-admin-username.txt
+- name: oracledb-ptr9ou-user-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/oracledb-ptr9ou-user-password.txt
+- name: oracledb-ptr9ou-user-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/oracledb-ptr9ou-user-username.txt
+- name: oracledb-ptr9ou-reader-password
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/oracledb-ptr9ou-read-password.txt
+- name: oracledb-ptr9ou-reader-username
+  type: gcp-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/oracledb-ptr9ou-read-username.txt

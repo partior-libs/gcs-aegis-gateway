@@ -344,6 +344,8 @@ def process_secret(provider, secret_name, target_env, secret_config, github_secr
 
     source = mapped_config.get('source')
     version = mapped_config.get('version')
+    # Allow application config to specify json-key, fallback to central config
+    json_key_to_extract = secret_config.get('json-key') or mapped_config.get('json-key')
     
     if not source:
         logger.error(f"Could not find 'source' in central config for name='{secret_name}', env='{target_env}', type='{provider}'")
@@ -374,6 +376,19 @@ def process_secret(provider, secret_name, target_env, secret_config, github_secr
     if not secret_value:
         logger.error(f"Failed to retrieve value for '{secret_name}'. Aborting.")
         raise Exception(f"Failed to retrieve value for '{secret_name}'.")
+
+    # If a JSON property is requested, extract it now
+    if json_key_to_extract:
+        try:
+            parsed_json = json.loads(secret_value)
+            if json_key_to_extract in parsed_json:
+                secret_value = str(parsed_json[json_key_to_extract])
+            else:
+                logger.error(f"Key '{json_key_to_extract}' not found in the JSON secret '{secret_name}'.")
+                raise Exception(f"Missing JSON key '{json_key_to_extract}' in secret '{secret_name}'.")
+        except json.JSONDecodeError:
+            logger.error(f"Secret '{secret_name}' is not valid JSON, but 'json-key' extraction was requested.")
+            raise Exception(f"Invalid JSON for key extraction in secret '{secret_name}'.")
         
     # 2. Mask the secret in GitHub Actions logs
     for line in secret_value.splitlines():

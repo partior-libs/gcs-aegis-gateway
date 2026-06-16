@@ -69,6 +69,7 @@ aegis-gateway:
       project: prj-dev-devnet02
       auth-profile: gcp-devnet02-target
       # version: "1"  # (Optional) Defaults to 'latest'.
+      # json-key: "password" # (Optional) Extracts specific key from JSON secret.
 
   # AWS Secrets Manager Example
   - name: aws-test-secret-2
@@ -81,7 +82,15 @@ aegis-gateway:
       # version: AWSPREVIOUS # (Optional) AWS VersionStage or Label.
 ```
 
-### 2. Auth Profiles Configuration
+### 2. JSON Key Extraction (`json-key`)
+
+If a secret is stored as a JSON object (e.g., `{"username": "admin", "password": "secure123"}`), you can use the `json-key` parameter to extract a specific value.
+
+*   **Behavior**: When `json-key` is provided, the gateway parses the secret payload as JSON and retrieves only the specified key.
+*   **Flexibility**: You can define `json-key` in the **Central Config** (if a secret is globally always a JSON object) or in the **Application Config** (if you want to pull different keys from the same JSON secret into different variables/files).
+*   **Safety**: If the secret is not valid JSON or the key is missing, the Action will fail securely.
+
+### 3. Auth Profiles Configuration
 
 Defines cross-account or cross-project impersonation details.
 
