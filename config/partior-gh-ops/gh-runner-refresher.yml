@@ -1,4 +1,11 @@
 aegis-link:
+  - name: psql-dapps-ptr1ga-client-cert
+    type: gcp-secret-manager
+    env: devnet02
+    outputs:
+      - type: file
+        destination: ./tmp/secrets/psql-dapps-ptr1ga-client-cert.pem
+
   - name: test-secret-1
     env: devnet02
     type: gcp-secret-manager

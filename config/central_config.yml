@@ -8,6 +8,14 @@ aegis-gateway:
       project: prj-dev-devnet02
       auth-profile: gcp-devnet02-target
 
+  - name: psql-dapps-ptr1ga-client-cert
+    env: devnet02
+    type: gcp-secret-manager
+    config:
+      source: projects/732439461432/secrets/psql-dapps-ptr1ga-client-cert
+      project: prj-dev-devnet02
+      auth-profile: gcp-devnet02-target
+
   - name: aws-test-secret-2
     env: devnet02
     type: aws-secret-manager
