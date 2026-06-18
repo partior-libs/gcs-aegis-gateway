@@ -1003,6 +1003,7 @@ aegis-gateway:
     project: prj-dev-devnet02
     auth-profile: gcp-devnet02-target
     json-key: password
+    version: "current"
 - name: psql-keycloak-ptr8gu-admin-username
   env: devnet02
   type: gcp-secret-manager
@@ -1011,6 +1012,7 @@ aegis-gateway:
     project: prj-dev-devnet02
     auth-profile: gcp-devnet02-target
     json-key: username
+    version: "current"
 - name: psql-keycloak-ptr8gu-user-password
   env: devnet02
   type: gcp-secret-manager
