@@ -7,3 +7,9 @@ aws-eu-deploy-target:
   type: aws-assume-role
   role-arn: arn:aws:iam::081403079551:role/role-eks-deploy
   region: eu-west-1
+
+aws-us-deploy-target:
+  type: aws-assume-role
+  role-arn: arn:aws:iam::081403079551:role/role-eks-deploy
+  region: us-east-1
+

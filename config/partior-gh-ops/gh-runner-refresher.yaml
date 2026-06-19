@@ -905,3 +905,255 @@ aegis-link:
   outputs:
   - type: file
     destination: ./tmp/secrets/oracledb-ptr9ou-read-username.txt
+- name: psql-tessera-ptr4ae-server-ca
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr4ae-server-ca.pem
+- name: psql-tessera-ptr4ae-admin-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr4ae-admin-password.txt
+- name: psql-tessera-ptr4ae-admin-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr4ae-admin-username.txt
+- name: psql-tessera-ptr4ae-user-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr4ae-user-password.txt
+- name: psql-tessera-ptr4ae-user-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr4ae-user-username.txt
+- name: psql-tessera-ptr4ae-reader-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr4ae-read-password.txt
+- name: psql-tessera-ptr4ae-reader-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr4ae-read-username.txt
+- name: psql-dapps-ptr4ae-server-ca
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr4ae-server-ca.pem
+- name: psql-dapps-ptr4ae-admin-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr4ae-admin-password.txt
+- name: psql-dapps-ptr4ae-admin-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr4ae-admin-username.txt
+- name: psql-dapps-ptr4ae-user-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr4ae-user-password.txt
+- name: psql-dapps-ptr4ae-user-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr4ae-user-username.txt
+- name: psql-dapps-ptr4ae-reader-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr4ae-read-password.txt
+- name: psql-dapps-ptr4ae-reader-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr4ae-read-username.txt
+- name: psql-keycloak-ptr4ae-server-ca
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr4ae-server-ca.pem
+- name: psql-keycloak-ptr4ae-admin-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr4ae-admin-password.txt
+- name: psql-keycloak-ptr4ae-admin-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr4ae-admin-username.txt
+- name: psql-keycloak-ptr4ae-user-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr4ae-user-password.txt
+- name: psql-keycloak-ptr4ae-user-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr4ae-user-username.txt
+- name: psql-keycloak-ptr4ae-reader-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr4ae-read-password.txt
+- name: psql-keycloak-ptr4ae-reader-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr4ae-read-username.txt
+- name: psql-tessera-ptr6au-server-ca
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr6au-server-ca.pem
+- name: psql-tessera-ptr6au-admin-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr6au-admin-password.txt
+- name: psql-tessera-ptr6au-admin-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr6au-admin-username.txt
+- name: psql-tessera-ptr6au-user-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr6au-user-password.txt
+- name: psql-tessera-ptr6au-user-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr6au-user-username.txt
+- name: psql-tessera-ptr6au-reader-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr6au-read-password.txt
+- name: psql-tessera-ptr6au-reader-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-tessera-ptr6au-read-username.txt
+- name: psql-dapps-ptr6au-server-ca
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr6au-server-ca.pem
+- name: psql-dapps-ptr6au-admin-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr6au-admin-password.txt
+- name: psql-dapps-ptr6au-admin-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr6au-admin-username.txt
+- name: psql-dapps-ptr6au-user-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr6au-user-password.txt
+- name: psql-dapps-ptr6au-user-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr6au-user-username.txt
+- name: psql-dapps-ptr6au-reader-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr6au-read-password.txt
+- name: psql-dapps-ptr6au-reader-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-dapps-ptr6au-read-username.txt
+- name: psql-keycloak-ptr6au-server-ca
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr6au-server-ca.pem
+- name: psql-keycloak-ptr6au-admin-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr6au-admin-password.txt
+- name: psql-keycloak-ptr6au-admin-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr6au-admin-username.txt
+- name: psql-keycloak-ptr6au-user-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr6au-user-password.txt
+- name: psql-keycloak-ptr6au-user-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr6au-user-username.txt
+- name: psql-keycloak-ptr6au-reader-password
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr6au-read-password.txt
+- name: psql-keycloak-ptr6au-reader-username
+  type: aws-secret-manager
+  env: devnet02
+  outputs:
+  - type: file
+    destination: ./tmp/secrets/psql-keycloak-ptr6au-read-username.txt

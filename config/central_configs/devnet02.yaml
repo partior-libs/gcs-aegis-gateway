@@ -1092,3 +1092,309 @@ aegis-gateway:
     source: projects/732439461432/secrets/oracledb-ptr9ou-reader-username
     project: prj-dev-devnet02
     auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr4ae-server-ca
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera_ptr4ae-server-ca
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-tessera-ptr4ae-admin-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: rds!db-d6fe801d-97ac-448c-998d-e1a05b355aa5
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+    json-key: password
+- name: psql-tessera-ptr4ae-admin-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: rds!db-d6fe801d-97ac-448c-998d-e1a05b355aa5
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+    json-key: username
+- name: psql-tessera-ptr4ae-user-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr4ae-user-password
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-tessera-ptr4ae-user-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr4ae-user-username
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-tessera-ptr4ae-reader-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr4ae-reader-password
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-tessera-ptr4ae-reader-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr4ae-reader-username
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-dapps-ptr4ae-server-ca
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps_ptr4ae-server-ca
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-dapps-ptr4ae-admin-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: rds!db-31345956-ccd7-4dca-a55d-87d29f350490
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+    json-key: password
+- name: psql-dapps-ptr4ae-admin-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: rds!db-31345956-ccd7-4dca-a55d-87d29f350490
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+    json-key: username
+- name: psql-dapps-ptr4ae-user-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr4ae-user-password
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-dapps-ptr4ae-user-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr4ae-iam-username
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-dapps-ptr4ae-reader-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr4ae-reader-password
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-dapps-ptr4ae-reader-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr4ae-reader-username
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-keycloak-ptr4ae-server-ca
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak_ptr4ae-server-ca
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-keycloak-ptr4ae-admin-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: rds!db-ef7fee81-bfb4-4776-bfca-f244c0c27826
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+    json-key: password
+- name: psql-keycloak-ptr4ae-admin-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: rds!db-ef7fee81-bfb4-4776-bfca-f244c0c27826
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+    json-key: username
+- name: psql-keycloak-ptr4ae-user-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr4ae-user-password
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-keycloak-ptr4ae-user-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr4ae-user-username
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-keycloak-ptr4ae-reader-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr4ae-reader-password
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-keycloak-ptr4ae-reader-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr4ae-reader-username
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-tessera-ptr6au-server-ca
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera_ptr6au-server-ca
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-tessera-ptr6au-admin-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: rds!db-77bbf6bc-a814-4362-9dec-0c5b8a3a8015
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+    json-key: password
+- name: psql-tessera-ptr6au-admin-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: rds!db-77bbf6bc-a814-4362-9dec-0c5b8a3a8015
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+    json-key: username
+- name: psql-tessera-ptr6au-user-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr6au-user-password
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-tessera-ptr6au-user-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr6au-user-username
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-tessera-ptr6au-reader-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr6au-reader-password
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-tessera-ptr6au-reader-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr6au-reader-username
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-dapps-ptr6au-server-ca
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps_ptr6au-server-ca
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-dapps-ptr6au-admin-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: rds!db-ad49f0e0-734c-4b5b-a369-e7abed017868
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+    json-key: password
+- name: psql-dapps-ptr6au-admin-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: rds!db-ad49f0e0-734c-4b5b-a369-e7abed017868
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+    json-key: username
+- name: psql-dapps-ptr6au-user-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr6au-user-password
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-dapps-ptr6au-user-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr6au-iam-username
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-dapps-ptr6au-reader-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr6au-reader-password
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-dapps-ptr6au-reader-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr6au-reader-username
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-keycloak-ptr6au-server-ca
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak_ptr6au-server-ca
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-keycloak-ptr6au-admin-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: rds!db-e4b8f787-dc11-48e8-ab2e-df12372a0721
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+    json-key: password
+- name: psql-keycloak-ptr6au-admin-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: rds!db-e4b8f787-dc11-48e8-ab2e-df12372a0721
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+    json-key: username
+- name: psql-keycloak-ptr6au-user-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr6au-user-password
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-keycloak-ptr6au-user-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr6au-user-username
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-keycloak-ptr6au-reader-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr6au-reader-password
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-keycloak-ptr6au-reader-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr6au-reader-username
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
