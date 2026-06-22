@@ -49,7 +49,9 @@ def write_to_file(destination, secret_value):
         dest_path.parent.mkdir(parents=True, exist_ok=True)
         with open(dest_path, 'w') as f:
             f.write(secret_value)
-    logger.info(f"Successfully wrote secret to file '{destination}'.")
+        # Set strict permissions (0600) for security and compatibility with strict clients like PostgreSQL
+        os.chmod(dest_path, 0o600)
+    logger.info(f"Successfully wrote secret to file '{destination}' with 0600 permissions.")
 
 def get_gh_secret(source, github_secrets):
     logger.info(f"Fetching GitHub secret: {source}")
