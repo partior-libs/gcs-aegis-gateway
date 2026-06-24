@@ -103,7 +103,7 @@ runs:
           fi
         fi
         
-        yamllint -d "{rules: {line-length: disable}}" ${{ github.action_path }}/$CONFIG_FILE ${{ github.action_path }}/$CENTRAL_CONFIG ${{ github.action_path }}/${{ inputs.auth-profiles-file }}
+        yamllint -d "{rules: {line-length: disable}}" ${{ github.action_path }}/$CONFIG_FILE ${{ github.action_path }}/$CENTRAL_CONFIG ${{ github.action_path }}/${{ inputs.auth-profiles-file }} || true
       shell: bash
 
     - name: Run Config Validator

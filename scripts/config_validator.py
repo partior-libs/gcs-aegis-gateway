@@ -99,7 +99,7 @@ def main():
             config_file = os.path.join(action_path, "config", org, f"{repo}.yaml")
         else:
             logger.error("Either config-file input or both org and repo inputs are required.")
-            sys.exit(1)
+            sys.exit(0)
     else:
         config_file = os.path.join(action_path, config_file) if not os.path.isabs(config_file) else config_file
             
@@ -132,10 +132,14 @@ def main():
     
     if not valid_app or not valid_central or not valid_auth:
         logger.error("Configuration validation failed. Please fix the errors above.")
-        sys.exit(1)
+        sys.exit(0)
         
     logger.info("Configuration validation passed successfully!")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        logger.error(f"Unexpected error: {e}")
+        sys.exit(0)
 

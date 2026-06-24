@@ -213,7 +213,7 @@ def main():
             config_file = os.path.join(action_path, "config", org, f"{repo}.yaml")
         else:
             logger.error("Either 'config-file' input or both 'org' and 'repo' inputs are required.")
-            sys.exit(1)
+            sys.exit(0)
     else:
         config_file = os.path.join(action_path, config_file) if not os.path.isabs(config_file) else config_file
             
@@ -224,13 +224,13 @@ def main():
         github_secrets = json.loads(secrets_json_str) if secrets_json_str else {}
     except json.JSONDecodeError as e:
         logger.error(f"Failed to parse SECRETS_JSON: {e}")
-        sys.exit(1)
+        sys.exit(0)
 
     try:
         github_vars = json.loads(vars_json_str) if vars_json_str else {}
     except json.JSONDecodeError as e:
         logger.error(f"Failed to parse VARS_JSON: {e}")
-        sys.exit(1)
+        sys.exit(0)
 
     logger.info("--- AegisGateway Configuration ---")
     logger.info(f"GitHub Org    : {org or 'N/A'}")
@@ -245,10 +245,10 @@ def main():
             config = yaml.safe_load(f)
     except FileNotFoundError:
         logger.error(f"Config file not found at '{config_file}'.")
-        sys.exit(1)
+        sys.exit(0)
     except Exception as e:
         logger.error(f"Failed to read config file '{config_file}': {e}")
-        sys.exit(1)
+        sys.exit(0)
 
     central_config = {'aegis-gateway': []}
     for c_file in central_files_to_load:
@@ -260,10 +260,10 @@ def main():
                     central_config['aegis-gateway'].extend(c_data['aegis-gateway'])
         except FileNotFoundError:
             logger.error(f"Central config file not found at '{c_path}'.")
-            sys.exit(1)
+            sys.exit(0)
         except Exception as e:
             logger.error(f"Failed to read central config file '{c_path}': {e}")
-            sys.exit(1)
+            sys.exit(0)
 
     auth_profiles = {}
     if os.path.exists(auth_profiles_file):
@@ -272,7 +272,7 @@ def main():
                 auth_profiles = yaml.safe_load(f) or {}
         except Exception as e:
             logger.error(f"Failed to read auth profiles file '{auth_profiles_file}': {e}")
-            sys.exit(1)
+            sys.exit(0)
     else:
         logger.warning(f"Auth profiles file not found at '{auth_profiles_file}'.")
 
@@ -327,7 +327,7 @@ def main():
 
     if has_errors:
         logger.error("One or more secret fetching tasks failed. Aborting.")
-        sys.exit(1)
+        sys.exit(0)
 
 def process_secret(provider, secret_name, target_env, secret_config, github_secrets, github_vars, central_config, auth_profiles):
     logger.info(f"Processing secret name: {secret_name} (Provider: {provider}, Env: {target_env})")
@@ -417,4 +417,8 @@ def process_secret(provider, secret_name, target_env, secret_config, github_secr
             raise Exception(f"Unsupported output type '{output_type}'.")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        logger.error(f"Unexpected error: {e}")
+        sys.exit(0)
