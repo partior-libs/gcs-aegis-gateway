@@ -412,9 +412,11 @@ def process_secret(provider, secret_name, target_env, secret_config, github_secr
             raise Exception(f"Invalid JSON for key extraction in secret '{secret_name}'.")
         
     # 2. Mask the secret in GitHub Actions logs
-    # for line in secret_value.splitlines():
-    #     if len(line.strip()) > 3:  # Prevent masking empty lines or short common characters
-    #         print(f"::add-mask::{line}")
+    for line in secret_value.splitlines():
+        line = line.strip()
+        if len(line) > 2:  # Prevent masking empty lines or very short common characters
+            # Mask all but the first character to allow partial visibility for debugging
+            print(f"::add-mask::{line[1:]}")
         
     # 3. Process outputs
     for output in outputs:
