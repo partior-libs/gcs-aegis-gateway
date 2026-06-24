@@ -1,6 +1,6 @@
 aegis-gateway:
 - name: psql-dapps-ptr1ga-client-cert
-  env: devnet02
+  env:devnet02
   type: gcp-secret-manager
   config:
     source: projects/732439461432/secrets/psql-dapps-ptr1ga-client-cert
