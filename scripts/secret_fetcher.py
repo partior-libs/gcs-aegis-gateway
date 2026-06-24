@@ -25,9 +25,28 @@ try:
 except ImportError:
     boto3 = None
 
+# ANSI color codes for logging
+RED = "\033[91m"
+YELLOW = "\033[93m"
+RESET = "\033[0m"
+
+class ColorFormatter(logging.Formatter):
+    def format(self, record):
+        if record.levelno == logging.ERROR:
+            record.levelname = f"{RED}{record.levelname}{RESET}"
+            record.msg = f"{RED}{record.msg}{RESET}"
+        elif record.levelno == logging.WARNING:
+            record.levelname = f"{YELLOW}{record.levelname}{RESET}"
+            record.msg = f"{YELLOW}{record.msg}{RESET}"
+        return super().format(record)
+
 # Set up logging
-logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+handler = logging.StreamHandler()
+handler.setFormatter(ColorFormatter("%(levelname)s: %(message)s"))
 logger = logging.getLogger(__name__)
+logger.addHandler(handler)
+logger.setLevel(logging.INFO)
+logger.propagate = False # Prevent double logging if basicConfig is called elsewhere
 
 def write_to_env(destination, secret_value):
     github_env = os.environ.get('GITHUB_ENV')
