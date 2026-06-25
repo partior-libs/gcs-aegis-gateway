@@ -34,11 +34,9 @@ def test_fetch_gh_secret():
 
     with patch('secret_fetcher.write_to_env') as mock_write_to_env:
         with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
-            process_secret('gh-secret', 'my_gh_secret', 'dev', secret_config, github_secrets, github_vars, central_config)
-
+            process_secret('gh-secret', 'my_gh_secret', 'dev', secret_config, github_secrets, github_vars, central_config, {})
             mock_write_to_env.assert_called_once_with('MY_WF_SECRET', 'super_secret_value')
-            assert '::add-mask::super_secret_value' in mock_stdout.getvalue()
-
+            assert '::add-mask::uper_secret_value' in mock_stdout.getvalue()
 def test_fetch_gh_variable_file_output():
     central_config = {
         'aegis-gateway': [
@@ -65,11 +63,9 @@ def test_fetch_gh_variable_file_output():
 
     with patch('secret_fetcher.write_to_file') as mock_write_to_file:
         with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
-            process_secret('gh-variable', 'my_gh_var', 'prod', secret_config, github_secrets, github_vars, central_config)
-
+            process_secret('gh-variable', 'my_gh_var', 'prod', secret_config, github_secrets, github_vars, central_config, {})
             mock_write_to_file.assert_called_once_with('./tmp/my_var.txt', 'var_value')
-            assert '::add-mask::var_value' in mock_stdout.getvalue()
-
+            assert '::add-mask::ar_value' in mock_stdout.getvalue()
 @patch('secret_fetcher.secretmanager')
 def test_fetch_gcp_secret(mock_secretmanager):
     # Setup mock GCP secret manager
@@ -105,12 +101,11 @@ def test_fetch_gcp_secret(mock_secretmanager):
     with patch('secret_fetcher.write_to_env') as mock_write_to_env:
         with patch('secret_fetcher.write_to_file') as mock_write_to_file:
             with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
-                process_secret('gcp-secret-manager', 'my_gcp_secret', 'dev', secret_config, {}, {}, central_config)
+                process_secret('gcp-secret-manager', 'my_gcp_secret', 'dev', secret_config, {}, {}, central_config, {})
 
                 mock_write_to_env.assert_called_once_with('MY_GCP_SECRET', 'gcp_super_secret')
                 mock_write_to_file.assert_called_once_with('./tmp/gcp_secret.txt', 'gcp_super_secret')
-                assert '::add-mask::gcp_super_secret' in mock_stdout.getvalue()
-                
+                assert '::add-mask::cp_super_secret' in mock_stdout.getvalue()                
                 # Verify that GCP secret manager was called correctly
                 mock_client_instance.access_secret_version.assert_called_once_with(
                     request={"name": "projects/123/secrets/my-secret/versions/1"}

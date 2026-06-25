@@ -34,10 +34,12 @@ aegis-link:
     }
 
     def mock_file_open(filename, mode='r'):
-        if filename == 'dummy_app.yml':
+        if str(filename).endswith('dummy_app.yml'):
             return mock_open(read_data=app_yaml).return_value
-        elif filename == 'dummy_central.yml':
+        elif str(filename).endswith('dummy_central.yml'):
             return mock_open(read_data=central_yaml).return_value
+        elif str(filename).endswith('auth_profiles.yaml'):
+            return mock_open(read_data="auth_profiles: []").return_value
         raise FileNotFoundError(filename)
 
     with patch.dict(os.environ, mocked_env, clear=True):
