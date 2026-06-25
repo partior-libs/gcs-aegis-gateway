@@ -1,0 +1,1400 @@
+aegis-gateway:
+- name: psql-dapps-ptr1ga-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr1ga-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr1ga-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr1ga-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr1ga-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr1ga-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr1ga-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr1ga-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-dapps-ptr1ga-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr1ga-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-dapps-ptr1ga-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr1ga-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr1ga-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr1ga-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr1ga-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr1ga-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr1ga-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr1ga-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr2gu-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr2gu-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr2gu-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr2gu-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr2gu-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr2gu-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr2gu-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr2gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-dapps-ptr2gu-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr2gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-dapps-ptr2gu-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr2gu-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr2gu-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr2gu-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr2gu-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr2gu-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr2gu-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr2gu-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr3ge-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr3ge-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr3ge-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr3ge-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr3ge-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr3ge-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr3ge-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr3ge-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-dapps-ptr3ge-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr3ge-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-dapps-ptr3ge-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr3ge-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr3ge-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr3ge-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr3ge-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr3ge-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr3ge-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr3ge-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr5gu-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr5gu-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr5gu-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr5gu-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr5gu-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr5gu-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr5gu-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr5gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-dapps-ptr5gu-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr5gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-dapps-ptr5gu-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr5gu-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr5gu-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr5gu-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr5gu-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr5gu-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr5gu-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr5gu-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr7ga-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr7ga-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr7ga-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr7ga-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr7ga-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr7ga-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr7ga-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr7ga-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-dapps-ptr7ga-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr7ga-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-dapps-ptr7ga-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr7ga-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr7ga-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr7ga-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr7ga-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr7ga-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-dapps-ptr7ga-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-dapps-ptr7ga-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr1ga-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr1ga-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr1ga-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr1ga-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr1ga-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr1ga-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr1ga-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr1ga-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-tessera-ptr1ga-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr1ga-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-tessera-ptr1ga-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr1ga-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr1ga-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr1ga-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr1ga-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr1ga-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr1ga-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr1ga-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr2gu-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr2gu-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr2gu-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr2gu-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr2gu-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr2gu-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr2gu-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr2gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-tessera-ptr2gu-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr2gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-tessera-ptr2gu-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr2gu-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr2gu-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr2gu-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr2gu-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr2gu-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr2gu-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr2gu-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr3ge-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr3ge-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr3ge-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr3ge-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr3ge-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr3ge-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr3ge-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr3ge-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-tessera-ptr3ge-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr3ge-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-tessera-ptr3ge-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr3ge-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr3ge-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr3ge-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr3ge-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr3ge-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr3ge-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr3ge-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr5gu-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr5gu-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr5gu-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr5gu-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr5gu-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr5gu-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr5gu-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr5gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-tessera-ptr5gu-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr5gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-tessera-ptr5gu-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr5gu-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr5gu-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr5gu-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr5gu-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr5gu-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr5gu-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr5gu-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr7ga-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr7ga-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr7ga-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr7ga-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr7ga-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr7ga-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr7ga-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr7ga-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-tessera-ptr7ga-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr7ga-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-tessera-ptr7ga-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr7ga-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr7ga-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr7ga-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr7ga-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr7ga-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr7ga-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-tessera-ptr7ga-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr1ga-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr1ga-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr1ga-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr1ga-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr1ga-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr1ga-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr1ga-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr1ga-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-keycloak-ptr1ga-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr1ga-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-keycloak-ptr1ga-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr1ga-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr1ga-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr1ga-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr1ga-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr1ga-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr1ga-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr1ga-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr2gu-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr2gu-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr2gu-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr2gu-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr2gu-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr2gu-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr2gu-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr2gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-keycloak-ptr2gu-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr2gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-keycloak-ptr2gu-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr2gu-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr2gu-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr2gu-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr2gu-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr2gu-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr2gu-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr2gu-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr3ge-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr3ge-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr3ge-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr3ge-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr3ge-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr3ge-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr3ge-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr3ge-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-keycloak-ptr3ge-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr3ge-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-keycloak-ptr3ge-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr3ge-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr3ge-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr3ge-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr3ge-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr3ge-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr3ge-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr3ge-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr5gu-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr5gu-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr5gu-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr5gu-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr5gu-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr5gu-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr5gu-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr5gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-keycloak-ptr5gu-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr5gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-keycloak-ptr5gu-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr5gu-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr5gu-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr5gu-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr5gu-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr5gu-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr5gu-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr5gu-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr7ga-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr7ga-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr7ga-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr7ga-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr7ga-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr7ga-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr7ga-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr7ga-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: psql-keycloak-ptr7ga-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr7ga-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: psql-keycloak-ptr7ga-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr7ga-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr7ga-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr7ga-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr7ga-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr7ga-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr7ga-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr7ga-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr8gu-client-cert
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr8gu-client-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr8gu-client-key
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr8gu-client-key
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr8gu-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr8gu-server-ca
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr8gu-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr8gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+    version: "current"
+- name: psql-keycloak-ptr8gu-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr8gu-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+    version: "current"
+- name: psql-keycloak-ptr8gu-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr8gu-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr8gu-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr8gu-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr8gu-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr8gu-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-keycloak-ptr8gu-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/psql-keycloak-ptr8gu-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: oracledb-ptr9ou-server-ca
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/oracledb-ptr9ou-tls-cert
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: oracledb-ptr9ou-admin-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/oracledb-ptr9ou-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: password
+- name: oracledb-ptr9ou-admin-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/oracledb-ptr9ou-master
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+    json-key: username
+- name: oracledb-ptr9ou-user-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/oracledb-ptr9ou-user-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: oracledb-ptr9ou-user-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/oracledb-ptr9ou-user-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: oracledb-ptr9ou-reader-password
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/oracledb-ptr9ou-reader-password
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: oracledb-ptr9ou-reader-username
+  env: devnet02
+  type: gcp-secret-manager
+  config:
+    source: projects/732439461432/secrets/oracledb-ptr9ou-reader-username
+    project: prj-dev-devnet02
+    auth-profile: gcp-devnet02-target
+- name: psql-tessera-ptr4ae-server-ca
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera_ptr4ae-server-ca
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+# - name: psql-tessera-ptr4ae-admin-password
+#   env: devnet02
+#   type: aws-secret-manager
+#   config:
+#     source: rds!db-d6fe801d-97ac-448c-998d-e1a05b355aa5
+#     region: eu-west-1
+#     auth-profile: aws-eu-deploy-target
+#     json-key: password
+# - name: psql-tessera-ptr4ae-admin-username
+#   env: devnet02
+#   type: aws-secret-manager
+#   config:
+#     source: rds!db-d6fe801d-97ac-448c-998d-e1a05b355aa5
+#     region: eu-west-1
+#     auth-profile: aws-eu-deploy-target
+#     json-key: username
+- name: psql-tessera-ptr4ae-user-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr4ae-user-password
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-tessera-ptr4ae-user-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr4ae-user-username
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-tessera-ptr4ae-reader-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr4ae-reader-password
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-tessera-ptr4ae-reader-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr4ae-reader-username
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-dapps-ptr4ae-server-ca
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps_ptr4ae-server-ca
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+# - name: psql-dapps-ptr4ae-admin-password
+#   env: devnet02
+#   type: aws-secret-manager
+#   config:
+#     source: rds!db-31345956-ccd7-4dca-a55d-87d29f350490
+#     region: eu-west-1
+#     auth-profile: aws-eu-deploy-target
+#     json-key: password
+# - name: psql-dapps-ptr4ae-admin-username
+#   env: devnet02
+#   type: aws-secret-manager
+#   config:
+#     source: rds!db-31345956-ccd7-4dca-a55d-87d29f350490
+#     region: eu-west-1
+#     auth-profile: aws-eu-deploy-target
+#     json-key: username
+- name: psql-dapps-ptr4ae-user-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr4ae-user-password
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-dapps-ptr4ae-user-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr4ae-iam-username
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-dapps-ptr4ae-reader-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr4ae-reader-password
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-dapps-ptr4ae-reader-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr4ae-reader-username
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-keycloak-ptr4ae-server-ca
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak_ptr4ae-server-ca
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+# - name: psql-keycloak-ptr4ae-admin-password
+#   env: devnet02
+#   type: aws-secret-manager
+#   config:
+#     source: rds!db-ef7fee81-bfb4-4776-bfca-f244c0c27826
+#     region: eu-west-1
+#     auth-profile: aws-eu-deploy-target
+#     json-key: password
+# - name: psql-keycloak-ptr4ae-admin-username
+#   env: devnet02
+#   type: aws-secret-manager
+#   config:
+#     source: rds!db-ef7fee81-bfb4-4776-bfca-f244c0c27826
+#     region: eu-west-1
+#     auth-profile: aws-eu-deploy-target
+#     json-key: username
+- name: psql-keycloak-ptr4ae-user-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr4ae-user-password
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-keycloak-ptr4ae-user-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr4ae-user-username
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-keycloak-ptr4ae-reader-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr4ae-reader-password
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-keycloak-ptr4ae-reader-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr4ae-reader-username
+    region: eu-west-1
+    auth-profile: aws-eu-deploy-target
+- name: psql-tessera-ptr6au-server-ca
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera_ptr6au-server-ca
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+# - name: psql-tessera-ptr6au-admin-password
+#   env: devnet02
+#   type: aws-secret-manager
+#   config:
+#     source: rds!db-77bbf6bc-a814-4362-9dec-0c5b8a3a8015
+#     region: us-east-1
+#     auth-profile: aws-us-deploy-target
+#     json-key: password
+# - name: psql-tessera-ptr6au-admin-username
+#   env: devnet02
+#   type: aws-secret-manager
+#   config:
+#     source: rds!db-77bbf6bc-a814-4362-9dec-0c5b8a3a8015
+#     region: us-east-1
+#     auth-profile: aws-us-deploy-target
+#     json-key: username
+- name: psql-tessera-ptr6au-user-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr6au-user-password
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-tessera-ptr6au-user-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr6au-user-username
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-tessera-ptr6au-reader-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr6au-reader-password
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-tessera-ptr6au-reader-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-tessera-ptr6au-reader-username
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-dapps-ptr6au-server-ca
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps_ptr6au-server-ca
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+# - name: psql-dapps-ptr6au-admin-password
+#   env: devnet02
+#   type: aws-secret-manager
+#   config:
+#     source: rds!db-ad49f0e0-734c-4b5b-a369-e7abed017868
+#     region: us-east-1
+#     auth-profile: aws-us-deploy-target
+#     json-key: password
+# - name: psql-dapps-ptr6au-admin-username
+#   env: devnet02
+#   type: aws-secret-manager
+#   config:
+#     source: rds!db-ad49f0e0-734c-4b5b-a369-e7abed017868
+#     region: us-east-1
+#     auth-profile: aws-us-deploy-target
+#     json-key: username
+- name: psql-dapps-ptr6au-user-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr6au-user-password
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-dapps-ptr6au-user-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr6au-iam-username
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-dapps-ptr6au-reader-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr6au-reader-password
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-dapps-ptr6au-reader-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-dapps-ptr6au-reader-username
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-keycloak-ptr6au-server-ca
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak_ptr6au-server-ca
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+# - name: psql-keycloak-ptr6au-admin-password
+#   env: devnet02
+#   type: aws-secret-manager
+#   config:
+#     source: rds!db-e4b8f787-dc11-48e8-ab2e-df12372a0721
+#     region: us-east-1
+#     auth-profile: aws-us-deploy-target
+#     json-key: password
+# - name: psql-keycloak-ptr6au-admin-username
+#   env: devnet02
+#   type: aws-secret-manager
+#   config:
+#     source: rds!db-e4b8f787-dc11-48e8-ab2e-df12372a0721
+#     region: us-east-1
+#     auth-profile: aws-us-deploy-target
+#     json-key: username
+- name: psql-keycloak-ptr6au-user-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr6au-user-password
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-keycloak-ptr6au-user-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr6au-user-username
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-keycloak-ptr6au-reader-password
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr6au-reader-password
+    region: us-east-1
+    auth-profile: aws-us-deploy-target
+- name: psql-keycloak-ptr6au-reader-username
+  env: devnet02
+  type: aws-secret-manager
+  config:
+    source: psql-keycloak-ptr6au-reader-username
+    region: us-east-1
+    auth-profile: aws-us-deploy-target

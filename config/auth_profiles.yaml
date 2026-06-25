@@ -1,0 +1,15 @@
+---
+gcp-devnet02-target:
+  type: gcp-impersonate
+  service-account: sa-gke-deploy@prj-dev-devnet02.iam.gserviceaccount.com
+
+aws-eu-deploy-target:
+  type: aws-assume-role
+  role-arn: arn:aws:iam::081403079551:role/role-eks-deploy
+  region: eu-west-1
+
+aws-us-deploy-target:
+  type: aws-assume-role
+  role-arn: arn:aws:iam::081403079551:role/role-eks-deploy
+  region: us-east-1
+

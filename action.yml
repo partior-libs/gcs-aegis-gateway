@@ -1,0 +1,134 @@
+name: 'AegisGateway Secret Fetcher'
+description: 'AegisGateway: Fetches secrets from various providers based on an AegisLink configuration.'
+
+inputs:
+  org:
+    description: 'GitHub organisation name'
+    required: false
+  repo:
+    description: 'GitHub repository name'
+    required: false
+  config-file:
+    description: 'Path to the YAML config file (defaults to ./config/<org>/<repo>.yaml)'
+    required: false
+  central-config-file:
+    description: 'Path to the central YAML config file (defaults to ./config/central_configs/<env>.yaml or loads ALL yaml files in ./config/central_configs/)'
+    required: false
+  auth-profiles-file:
+    description: 'Path to the auth profiles YAML file (defaults to ./config/auth_profiles.yaml)'
+    required: false
+    default: 'config/auth_profiles.yaml'
+  provider:
+    description: 'Specific provider to fetch (default: all)'
+    required: false
+    default: 'all'
+  secrets-json:
+    description: 'JSON string of GitHub secrets'
+    required: false
+  vars-json:
+    description: 'JSON string of GitHub variables'
+    required: false
+  env:
+    description: 'Environment to filter secrets for'
+    required: false
+  gcp-workload-identity-provider:
+    description: 'The GCP Workload Identity Provider to authenticate with'
+    required: false
+    default: 'projects/313248254658/locations/global/workloadIdentityPools/wip-tf-core-shared/providers/wipp-tf-core-shared'
+  gcp-service-account:
+    description: 'The GCP Service Account to authenticate as'
+    required: false
+    default: 'sa-gh-actions@prj-dev-platform-services.iam.gserviceaccount.com'
+  aws-region:
+    description: 'The AWS region'
+    required: false
+    default: 'ap-southeast-1'
+  aws-role-to-assume:
+    description: 'The AWS role to assume'
+    required: false
+    default: 'arn:aws:iam::906724447956:role/role-gh-actions'
+  aws-role-session-name:
+    description: 'The AWS role session name'
+    required: false
+    default: 'gh-actions-session'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Authenticate to Google Cloud
+      if: ${{ inputs.gcp-workload-identity-provider != '' && inputs.gcp-service-account != '' }}
+      uses: google-github-actions/auth@v2
+      with:
+        workload_identity_provider: ${{ inputs.gcp-workload-identity-provider }}
+        service_account: ${{ inputs.gcp-service-account }}
+
+    - name: Authenticate to AWS Cloud
+      if: ${{ inputs.aws-region != '' && inputs.aws-role-to-assume != '' }}
+      uses: aws-actions/configure-aws-credentials@v6
+      with:
+        aws-region: ${{ inputs.aws-region }}
+        role-to-assume: ${{ inputs.aws-role-to-assume }}
+        role-session-name: ${{ inputs.aws-role-session-name }}
+
+    - name: Install Dependencies
+      run: |
+        python3 --version
+        pip install pyyaml google-auth google-cloud-secret-manager boto3 yamllint
+      shell: bash
+
+    - name: Run yamllint
+      run: |
+        CONFIG_FILE="${{ inputs.config-file }}"
+        ORG="${{ inputs.org }}"
+        REPO="${{ inputs.repo }}"
+        CENTRAL_CONFIG="${{ inputs.central-config-file }}"
+        ENV_FILTER="${{ inputs.env }}"
+        
+        if [ -z "$ORG" ] || [ -z "$REPO" ]; then
+          IFS='/' read -r ORG REPO <<< "${{ github.repository }}"
+        fi
+        if [ -z "$CONFIG_FILE" ]; then
+          CONFIG_FILE="config/$ORG/$REPO.yaml"
+        fi
+        if [ -z "$CENTRAL_CONFIG" ]; then
+          if [ -n "$ENV_FILTER" ]; then
+            CENTRAL_CONFIG="config/central_configs/$ENV_FILTER.yaml"
+          else
+            CENTRAL_CONFIG="config/central_configs/*.yaml"
+          fi
+        fi
+        
+        yamllint -f colored -d "{rules: {line-length: disable}}" ${{ github.action_path }}/$CONFIG_FILE ${{ github.action_path }}/$CENTRAL_CONFIG ${{ github.action_path }}/${{ inputs.auth-profiles-file }} || true
+      shell: bash
+
+    - name: Run Config Validator
+      run: python ${{ github.action_path }}/scripts/config_validator.py
+      shell: bash
+      env:
+        INPUT_ORG: ${{ inputs.org }}
+        INPUT_REPO: ${{ inputs.repo }}
+        INPUT_CONFIG_FILE: ${{ inputs.config-file }}
+        INPUT_CENTRAL_CONFIG_FILE: ${{ inputs.central-config-file }}
+        INPUT_AUTH_PROFILES_FILE: ${{ inputs.auth-profiles-file }}
+        INPUT_ENV: ${{ inputs.env }}
+        ACTION_PATH: ${{ github.action_path }}
+
+    - name: Run Secret Fetcher
+      run: python ${{ github.action_path }}/scripts/secret_fetcher.py
+      shell: bash
+      env:
+        INPUT_ORG: ${{ inputs.org }}
+        INPUT_REPO: ${{ inputs.repo }}
+        INPUT_CONFIG_FILE: ${{ inputs.config-file }}
+        INPUT_CENTRAL_CONFIG_FILE: ${{ inputs.central-config-file }}
+        INPUT_AUTH_PROFILES_FILE: ${{ inputs.auth-profiles-file }}
+        ACTION_PATH: ${{ github.action_path }}
+        INPUT_PROVIDER: ${{ inputs.provider }}
+        INPUT_ENV: ${{ inputs.env }}
+        SECRETS_JSON: ${{ inputs.secrets-json }}
+        VARS_JSON: ${{ inputs.vars-json }}

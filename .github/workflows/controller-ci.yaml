@@ -1,0 +1,21 @@
+name: Controller CI
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '*.md'
+      - '.gitignore'
+      - 'CODEOWNERS'
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - '*.md'
+      - '.gitignore'
+      - 'CODEOWNERS'
+  workflow_dispatch:
+
+jobs:
+  update-partior-tag:
+    uses: partior-libs/controller-generic-pipelines/.github/workflows/pipeline-template-controller-ci.yaml@partior-stable
+    secrets: inherit
