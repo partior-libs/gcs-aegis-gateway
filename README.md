@@ -13,7 +13,7 @@ By utilizing Just-In-Time (JIT) access and OIDC (OpenID Connect) Workload Identi
 *   **Platform Support**: Native integrations for GCP Secret Manager, AWS Secrets Manager, and GitHub Secrets/Vars.
 *   **High Performance**: Uses thread-safe concurrent API fetching to grab hundreds of secrets in seconds.
 *   **Separation of Concerns**: Platform engineers define *where* secrets live and *how* to authenticate (`central_configs`). Application developers simply define *which* secrets they need (`aegis-link` repo configs).
-*   **Secure Outputs**: Automatically masks all fetched secrets in GitHub logs. Injects secrets securely into environment variables (`$GITHUB_ENV`) or directly into temporary files (ideal for certificates).
+*   **Secure Outputs**: Automatically masks all fetched secrets in GitHub logs. Injects secrets securely into environment variables (`$GITHUB_ENV`) or directly into temporary files with strict **0600 permissions** (ideal for certificates).
 *   **Version Pinning**: Supports specific secret versions and labels (AWS `VersionStage`).
 
 ---
@@ -33,11 +33,12 @@ When the Action runs, it cross-references the App Config with the Central Config
 
 | Input | Description | Required | Default |
 | :--- | :--- | :---: | :--- |
-| `org` | GitHub organisation name | No | `${{ github.repository_owner }}` |
-| `repo` | GitHub repository name | No | Extracted from repository |
+| `org` | GitHub organisation name | No | Extracted from `github.repository` |
+| `repo` | GitHub repository name | No | Extracted from `github.repository` |
 | `config-file` | Path to the repo YAML config file | No | `config/<org>/<repo>.yaml` |
 | `central-config-file` | Path to central config. Defaults to `<env>.yaml` or loads ALL `*.yaml`. | No | `config/central_configs/*.yaml` |
 | `auth-profiles-file` | Path to the auth profiles YAML file | No | `config/auth_profiles.yaml` |
+| `provider` | Filter to fetch only a specific provider (e.g., `gcp`, `aws`, `gh-secret`) | No | `all` |
 | `env` | Target environment to filter secrets for (e.g., `devnet02`) | No | `None` |
 | `secrets-json` | JSON string of GitHub secrets (`${{ toJson(secrets) }}`) | **Yes** | |
 | `vars-json` | JSON string of GitHub variables (`${{ toJson(vars) }}`) | **Yes** | |
@@ -45,6 +46,7 @@ When the Action runs, it cross-references the App Config with the Central Config
 | `gcp-service-account` | GCP Service Account to impersonate | No | *(Preconfigured default)* |
 | `aws-region` | AWS Region | No | `ap-southeast-1` |
 | `aws-role-to-assume` | AWS IAM Role ARN to assume via OIDC | No | *(Preconfigured default)* |
+| `aws-role-session-name` | Session name for AWS STS assume role | No | `gh-actions-session` |
 
 ---
 
@@ -182,4 +184,30 @@ jobs:
             exit 1
           fi
           echo "Secrets are ready for deployment!"
+
+---
+
+## 🧪 Development and Testing
+
+### Running Unit Tests
+Aegis Gateway includes a comprehensive test suite using `pytest`. 
+
+To run tests locally:
+1.  **Set up a Virtual Environment**:
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+2.  **Install Dependencies**:
+    ```bash
+    pip install pytest pytest-cov pyyaml google-auth google-cloud-secret-manager boto3 yamllint
+    ```
+3.  **Run Tests**:
+    ```bash
+    export PYTHONPATH=scripts
+    pytest tests/ -v
+    ```
+
+### CI/CD Pipeline
+Unit tests are automatically executed on every Push or Pull Request to the `main` branch via the [Unit Tests](.github/workflows/unit-tests.yaml) GitHub Workflow.
 ```
